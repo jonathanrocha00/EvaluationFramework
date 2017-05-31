@@ -1,22 +1,25 @@
 package model;
 
-public class UserEvaluation extends FrameworkObject {
+import java.util.Date;
+import java.util.List;
+
+public class UserEvaluation extends Evaluation {
 
 	// Attributes ====================================================
-	private EvaluableItem evaluatedItem;
+	private EvaluableUser evaluatedUser;
 	
 	// Constructors ==================================================
-	public UserEvaluation(EvaluableItem evaluatedItem, int id, String name, String description) {
-		super(id, name, description);
-		this.evaluatedItem = evaluatedItem;
+	public UserEvaluation(EvaluableUser evaluatedUser, User user, List<SubjectiveCriterion> subjectiveCriteria, List<ObjectiveCriterion> objectiveCriteria, Date date) {
+		super(user, subjectiveCriteria, objectiveCriteria, date);
+		this.evaluatedUser = evaluatedUser;
 	}
 
 	// Methods =======================================================
-	public EvaluableItem getEvaluatedItem() {
-		return evaluatedItem;
+	public EvaluableUser getEvaluatedItem() {
+		return evaluatedUser;
 	}
 
-	public void setEvaluatedItem(EvaluableItem evaluatedItem) {
-		this.evaluatedItem = evaluatedItem;
+	public void setEvaluatedItem(EvaluableUser evaluatedUser) {
+		this.evaluatedUser = evaluatedUser;
 	}
 }
