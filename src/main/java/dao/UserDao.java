@@ -5,37 +5,35 @@ import java.util.List;
 import model.User;
 
 public class UserDao implements DaoInterface<User>{
+	
+	private Dao<User> daoAdapter = new Dao<User>(User.class);
 
 	@Override
 	public List<User> searchAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return daoAdapter.findAll();
 	}
 
 	@Override
 	public User search(int elemento) {
-		// TODO Auto-generated method stub
-		return null;
+		return daoAdapter.findById(elemento);
 	}
 
 	@Override
 	public void insert(User novo) {
-		// TODO Auto-generated method stub
-		
+		daoAdapter.saveOrUpdate(novo);
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	public void update(User elemento) {
+		daoAdapter.saveOrUpdate(elemento);
 	}
 
 	@Override
 	public void delete(User elemento) {
-		// TODO Auto-generated method stub
-		
+		daoAdapter.delete(elemento);
 	}
-
 	
+	
+
 
 }

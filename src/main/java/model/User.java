@@ -2,11 +2,16 @@ package model;
 
 import java.util.List;
 
-public class User {
+public class User extends FrameworkObject {
+	
 	// Attributes ====================================================
 	protected String name;
 	
 	// Constructors ==================================================
+	public User() {
+		
+	}
+	
 	public User(String name) {
 		this.name = name;
 	}

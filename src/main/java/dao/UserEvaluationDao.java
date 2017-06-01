@@ -6,36 +6,31 @@ import model.UserEvaluation;
 
 public class UserEvaluationDao implements DaoInterface<UserEvaluation>{
 
+	private Dao<UserEvaluation> daoAdapter = new Dao<UserEvaluation>(UserEvaluation.class);
+	
 	@Override
 	public List<UserEvaluation> searchAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return daoAdapter.findAll();
 	}
 
 	@Override
 	public UserEvaluation search(int elemento) {
-		// TODO Auto-generated method stub
-		return null;
+		return daoAdapter.findById(elemento);
 	}
 
 	@Override
 	public void insert(UserEvaluation novo) {
-		// TODO Auto-generated method stub
-		
+		daoAdapter.saveOrUpdate(novo);
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	public void update(UserEvaluation elemento) {
+		daoAdapter.saveOrUpdate(elemento);
 	}
 
 	@Override
 	public void delete(UserEvaluation elemento) {
-		// TODO Auto-generated method stub
-		
+		daoAdapter.delete(elemento);
 	}
-
-	
 
 }

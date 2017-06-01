@@ -8,6 +8,10 @@ public abstract class FrameworkObject {
 	protected String description;
 	
 	// Constructors ===================================================
+	public FrameworkObject() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public FrameworkObject(int id, String name, String description) {
 		this.id = id;
 		this.name = name;

@@ -3,7 +3,7 @@ package model;
 import java.util.Date;
 import java.util.List;
 
-public abstract class Evaluation {
+public abstract class Evaluation extends FrameworkObject {
 	// Attributes =================================================
 	protected User user;
 	protected List<SubjectiveCriterion> subjectiveCriteria;
