@@ -22,11 +22,11 @@ public class Dao<T extends FrameworkObject> {
 	}
 		 
 	protected SessionFactory getSessionFactory(){
-		return Hibernate.getSessionFactory();
+		return HibernateConfig.getSessionFactory();
 	}
 	
 	protected Session getCurrentSession(){
-		return Hibernate.getSessionFactory().getCurrentSession();
+		return HibernateConfig.getSessionFactory().getCurrentSession();
 	}
 	
 	public T findById(Integer id) throws NoResultException {

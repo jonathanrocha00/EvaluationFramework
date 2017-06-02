@@ -1,16 +1,27 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class FrameworkObject {
 	
 	// Attributes =====================================================
+	@Id
+	@GeneratedValue
+	@Column(name="id")
 	protected int id;
+	
+	@Column
 	protected String name;
+	
+	@Column
 	protected String description;
 	
 	// Constructors ===================================================
-	public FrameworkObject() {
-		// TODO Auto-generated constructor stub
-	}
+	public FrameworkObject() {}
 	
 	public FrameworkObject(int id, String name, String description) {
 		this.id = id;

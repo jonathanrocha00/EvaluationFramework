@@ -2,15 +2,20 @@ package model;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class User extends FrameworkObject {
 	
 	// Attributes ====================================================
-	protected String name;
 	
 	// Constructors ==================================================
-	public User() {
-		
-	}
+	public User() {}
 	
 	public User(String name) {
 		this.name = name;
