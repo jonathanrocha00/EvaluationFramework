@@ -37,8 +37,8 @@ public class ItemEvaluationDao implements DaoInterface<ItemEvaluation>{
 			
 			if(ie.getUser() == element.getUser() && ie.getEvaluatedItem() == element.getEvaluatedItem()) {
 				ie.setDate(element.getDate());
-				ie.setObjectiveCriteria(element.getObjectiveCriteria());
-				ie.setSubjectiveCriteria(element.getSubjectiveCriteria());
+				ie.setComments(element.getComments());
+				ie.setRates(element.getRates());
 			}
 		}
 	}

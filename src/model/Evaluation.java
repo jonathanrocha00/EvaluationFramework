@@ -6,17 +6,17 @@ import java.util.List;
 public abstract class Evaluation {
 	// Attributes =================================================
 	protected User user;
-	protected List<SubjectiveCriterion> subjectiveCriteria;
-	protected List<ObjectiveCriterion> objectiveCriteria;
+	protected List<String> comments;
+	protected List<Integer> rates;
 	protected Date date;
 	
 	// Constructors ================================================
-	public Evaluation(User user, List<SubjectiveCriterion> subjectiveCriteria,
-			List<ObjectiveCriterion> objectiveCriteria, Date date) {
+	public Evaluation(User user, List<String> comments,
+			List<Integer> rates, Date date) {
 		super();
 		this.user = user;
-		this.subjectiveCriteria = subjectiveCriteria;
-		this.objectiveCriteria = objectiveCriteria;
+		this.comments = comments;
+		this.rates = rates;
 		this.date = date;
 	}
 	
@@ -29,22 +29,6 @@ public abstract class Evaluation {
 		this.user = user;
 	}
 
-	public List<SubjectiveCriterion> getSubjectiveCriteria() {
-		return subjectiveCriteria;
-	}
-
-	public void setSubjectiveCriteria(List<SubjectiveCriterion> subjectiveCriteria) {
-		this.subjectiveCriteria = subjectiveCriteria;
-	}
-
-	public List<ObjectiveCriterion> getObjectiveCriteria() {
-		return objectiveCriteria;
-	}
-
-	public void setObjectiveCriteria(List<ObjectiveCriterion> objectiveCriteria) {
-		this.objectiveCriteria = objectiveCriteria;
-	}
-
 	public Date getDate() {
 		return date;
 	}
@@ -52,4 +36,22 @@ public abstract class Evaluation {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+	public List<String> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<String> comments) {
+		this.comments = comments;
+	}
+
+	public List<Integer> getRates() {
+		return rates;
+	}
+
+	public void setRates(List<Integer> rates) {
+		this.rates = rates;
+	}
+	
+	
 }

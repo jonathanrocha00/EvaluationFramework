@@ -36,8 +36,8 @@ public class UserEvaluationDao implements DaoInterface<UserEvaluation>{
 			
 			if(ue.getUser() == element.getUser() && ue.getEvaluatedItem() == element.getEvaluatedItem()) {
 				ue.setDate(element.getDate());
-				ue.setObjectiveCriteria(element.getObjectiveCriteria());
-				ue.setSubjectiveCriteria(element.getSubjectiveCriteria());
+				ue.setComments(element.getComments());
+				ue.setRates(element.getRates());
 			}
 		}
 	}

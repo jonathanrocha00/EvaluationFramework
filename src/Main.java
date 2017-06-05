@@ -42,7 +42,16 @@ public class Main {
 		
 		// ==================
 		EvaluableItemDao evaluableItemDao = new EvaluableItemDao();
-		EvaluableItem item = new EvaluableItem(1, "UFRN", "Universidade Federal do Rio Grande do Norte");
+		
+		ArrayList<SubjectiveCriterion> list1 = new ArrayList<SubjectiveCriterion>();
+		SubjectiveCriterion sub = new SubjectiveCriterion(1, "O quanto é bom?", "Descreva o quanto é bom...", null);
+		list1.add(sub);
+		
+		ArrayList<ObjectiveCriterion> list2 = new ArrayList<ObjectiveCriterion>();
+		ObjectiveCriterion ob = new ObjectiveCriterion(1, "Nota", "Dê uma nota...", 0, CriterionType.BOOL);
+		list2.add(ob);
+		
+		EvaluableItem item = new EvaluableItem(1, "UFRN", "Universidade Federal do Rio Grande do Norte", list2, list1);
 		evaluableItemDao.insert(item);
 		
 		List<EvaluableItem> items = evaluableItemDao.searchAll();
@@ -53,21 +62,9 @@ public class Main {
 			System.out.println("\t" + e.getName());
 		}
 		
-		EvaluableItem item222 = new EvaluableItem(1, "UFRNN", "universidade federal do rn");
-		evaluableItemDao.update(item222);
-		
-		items = evaluableItemDao.searchAll();
-		System.out.println("Itens: ");
-		Iterator<EvaluableItem> it222 = items.iterator();
-		while(it222.hasNext()) {
-			EvaluableItem f = it222.next();
-			System.out.println("\t" + f.getName());
-		}
-		
-		
 		// ==================
 		EvaluableUserDao evaluableUserDao = new EvaluableUserDao();
-		EvaluableUser eUser = new EvaluableUser("Joao", "Professor joao");
+		EvaluableUser eUser = new EvaluableUser("Joao", "Professor joao", list2, list1);
 		evaluableUserDao.insert(eUser);
 		
 		List<EvaluableUser> eUsers = evaluableUserDao.searchAll();
@@ -80,18 +77,16 @@ public class Main {
 		
 		// =================
 		System.out.println("Avaliação de Item: ");
-		List<SubjectiveCriterion> list1 = new ArrayList<SubjectiveCriterion>();
-		SubjectiveCriterion sub = new SubjectiveCriterion(1, "nome", "descricao", "gostei");
-		list1.add(sub);
-		
-		List<ObjectiveCriterion> list2 = new ArrayList<ObjectiveCriterion>();
-		ObjectiveCriterion ob = new ObjectiveCriterion(1, "nome", "descricao", 0, CriterionType.BOOL);
-		list2.add(ob);
 		
 		Date data = new GregorianCalendar(2017, Calendar.JUNE, 4).getTime();
 		Test test = new Test();
 		
-		EvaluationManagerSingleton.getInstance().evaluateItem(test, item, user2, list1, list2, data);
+		List<String> comentarios = new ArrayList<String>();
+		comentarios.add("É muito bom!!");
+		List<Integer> rates = new ArrayList<Integer>();
+		rates.add(1);
+		
+		EvaluationManagerSingleton.getInstance().evaluateItem(test, item, user2, comentarios, rates, data);
 		
 		List<ItemEvaluation> itemev = EvaluationManagerSingleton.getInstance().getAllItemEvaluations();
 		
@@ -100,8 +95,8 @@ public class Main {
 			ItemEvaluation ue = it4.next();
 			System.out.println("\tItem:" + ue.getEvaluatedItem().getName());
 			System.out.println("\tUsuário:" + ue.getUser().getName());
-			System.out.println("\tCritério Objetivo:" + ue.getObjectiveCriteria().get(0).getRate());
-			System.out.println("\tCritério Subjtivo:" + ue.getSubjectiveCriteria().get(0).getComment());
+			System.out.println("\tCritério Objetivo:" + ue.getComments().get(0));
+			System.out.println("\tCritério Subjtivo:" + ue.getRates().get(0));
 			System.out.println("\tData::" + ue.getDate());
 		}
 		
@@ -119,7 +114,7 @@ public class Main {
 		
 		Test2 test2 = new Test2();
 		
-		EvaluationManagerSingleton.getInstance().evaluateUser(test2, eUser, user, list1, list2, data);
+		EvaluationManagerSingleton.getInstance().evaluateUser(test2, eUser, user, comentarios, rates, data);
 		
 		List<UserEvaluation> userev = EvaluationManagerSingleton.getInstance().getAllUserEvaluations();
 		
@@ -128,8 +123,8 @@ public class Main {
 			UserEvaluation ue = it5.next();
 			System.out.println("\tItem:" + ue.getEvaluatedItem().getName());
 			System.out.println("\tUsuário:" + ue.getUser().getName());
-			System.out.println("\tCritério Objetivo:" + ue.getObjectiveCriteria().get(0).getRate());
-			System.out.println("\tCritério Subjtivo:" + ue.getSubjectiveCriteria().get(0).getComment());
+			System.out.println("\tCritério Objetivo:" + ue.getComments().get(0));
+			System.out.println("\tCritério Subjtivo:" + ue.getRates().get(0));
 			System.out.println("\tData::" + ue.getDate());
 		}
 		

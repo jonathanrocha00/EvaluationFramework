@@ -30,17 +30,17 @@ public class EvaluationManagerSingleton {
 		return singletonInstance;
 	}
 	
-	public void evaluateItem(EvaluationRule<EvaluableItem, User> evaluationRuleItem, EvaluableItem itemToBeEvaluated, User userWhoEvaluated, List<SubjectiveCriterion> subjectiveCriteria, List<ObjectiveCriterion> objectiveCriteria, Date date) {
+	public void evaluateItem(EvaluationRule<EvaluableItem, User> evaluationRuleItem, EvaluableItem itemToBeEvaluated, User userWhoEvaluated, List<String> comments, List<Integer> rates, Date date) {
 		
 		if (evaluationRuleItem.validateEvaluation(itemToBeEvaluated, userWhoEvaluated) == true){
-			itemEvaluationService.insert(new ItemEvaluation(itemToBeEvaluated, userWhoEvaluated, subjectiveCriteria, objectiveCriteria, date));
+			itemEvaluationService.insert(new ItemEvaluation(itemToBeEvaluated, userWhoEvaluated, comments, rates, date));
 		}
 	}
 	
-	public void evaluateUser(EvaluationRule<EvaluableUser, User> evaluationRuleUser, EvaluableUser userToBeEvaluated, User userWhoEvaluated, List<SubjectiveCriterion> subjectiveCriteria, List<ObjectiveCriterion> objectiveCriteria, Date date) {
+	public void evaluateUser(EvaluationRule<EvaluableUser, User> evaluationRuleUser, EvaluableUser userToBeEvaluated, User userWhoEvaluated, List<String> comments, List<Integer> rates, Date date) {
 		
 		if (evaluationRuleUser.validateEvaluation(userToBeEvaluated, userWhoEvaluated) == true){
-			userEvaluationService.insert(new UserEvaluation(userToBeEvaluated, userWhoEvaluated, subjectiveCriteria, objectiveCriteria, date));
+			userEvaluationService.insert(new UserEvaluation(userToBeEvaluated, userWhoEvaluated, comments, rates, date));
 		}
 	}
 	
