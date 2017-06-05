@@ -3,16 +3,17 @@ package service;
 import java.util.List;
 
 import dao.DaoInterface;
+import dao.UserDao;
 import model.User;
 
 public class UserService implements ServiceInterface<User>{
 	
 	// Attributes ====================================================
-	private DaoInterface<User> userDao;
+	private UserDao userDao;
 	
 	// Constructors ==================================================
-	public UserService(DaoInterface<User> userDao) {
-		this.userDao = userDao;
+	public UserService() {
+		userDao = new UserDao();
 	} 
 	
 	// Methods =======================================================

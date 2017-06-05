@@ -3,16 +3,17 @@ package service;
 import java.util.List;
 
 import dao.DaoInterface;
+import dao.EvaluableItemDao;
 import model.EvaluableItem;
 
 public class EvaluableItemService implements ServiceInterface<EvaluableItem>{
 	
 	// Attributes ====================================================
-	private DaoInterface<EvaluableItem> evaluableItemDAO;
+	private EvaluableItemDao evaluableItemDAO;
 	
 	// Constructors ==================================================
-	public EvaluableItemService(DaoInterface<EvaluableItem> evaluableItemDAO) {
-		this.evaluableItemDAO = evaluableItemDAO;
+	public EvaluableItemService() {
+		evaluableItemDAO = new EvaluableItemDao();
 	} 
 	
 	// Methods =======================================================

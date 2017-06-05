@@ -3,17 +3,18 @@ package service;
 import java.util.List;
 
 import dao.DaoInterface;
+import dao.EvaluableUserDao;
 import model.EvaluableUser;
 
 public class EvaluableUserService implements ServiceInterface<EvaluableUser> {
 
 	// Attributes ====================================================
-	private DaoInterface<EvaluableUser> evaluableUserDao;
+	private EvaluableUserDao evaluableUserDao;
 
 	// Constructors ==================================================
-	public EvaluableUserService(DaoInterface<EvaluableUser> evaluableUserDao) {
-			this.evaluableUserDao = evaluableUserDao;
-		}
+	public EvaluableUserService() {
+		evaluableUserDao = new EvaluableUserDao();
+	}
 
 	// Methods =======================================================
 	public List<EvaluableUser> searchAll() {
