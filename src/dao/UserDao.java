@@ -33,7 +33,7 @@ public class UserDao implements DaoInterface<User> {
 	
 	// Not implemented.
 	public void update() {
-		throw new UnsupportedOperationException("Not implemented.");
+		throw new UnsupportedOperationException();
 	}
 	
 	public void delete(User element) {
