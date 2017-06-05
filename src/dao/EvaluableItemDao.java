@@ -32,7 +32,7 @@ public class EvaluableItemDao implements DaoInterface<EvaluableItem>{
 	
 	// Not implemented.
 	public void update() {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException("Not implemented.");
 	}
 	
 	public void delete(EvaluableItem element) {

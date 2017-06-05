@@ -33,7 +33,7 @@ public class EvaluableUserDao implements DaoInterface<EvaluableUser>{
 	
 	// Not implemented.
 	public void update() {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException("Not implemented.");
 	}
 	
 	public void delete(EvaluableUser element) {
