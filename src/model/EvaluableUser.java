@@ -10,10 +10,10 @@ public class EvaluableUser extends User {
 	private ArrayList<SubjectiveCriterion> subjectiveCriteriaToBeEvaluated;
 
 	// Constructor ===================================================
-	public EvaluableUser(String name, String description, 
+	public EvaluableUser(String name, int id, String description, 
 			ArrayList<ObjectiveCriterion> objectiveCriteriaToBeEvaluated, 
 			ArrayList<SubjectiveCriterion> subjectiveCriteriaToBeEvaluated) {
-		super(name);
+		super(name, id);
 		
 		this.description = description;
 		this.objectiveCriteriaToBeEvaluated = objectiveCriteriaToBeEvaluated;

@@ -1,8 +1,8 @@
-package Main;
+package instanciaacademica;
 
 import java.util.ArrayList;
 
-import modelo.*;
+import model.*;
 import service.*;
 
 public class Main {
@@ -13,13 +13,13 @@ public class Main {
 		EvaluableUserService evaluableUserService = new EvaluableUserService();
 		EvaluableItemService evaluableItemService = new EvaluableItemService();
 		
-		userService.insert(new Aluno("Pedro", 6));
-		userService.insert(new Aluno("Davi", 2));
-		userService.insert(new Aluno("Lucio", 3));
+		userService.insert(new Aluno("Pedro", 1, 6));
+		userService.insert(new Aluno("Davi", 2, 2));
+		userService.insert(new Aluno("Lucio", 3, 3));
 		
-		evaluableUserService.insert(new Professor("Joao", "CCHLA"));
-		evaluableUserService.insert(new Professor("Maria", "DIMAP"));
-		evaluableUserService.insert(new Professor("Joana", "CCET"));
+		evaluableUserService.insert(new Professor("Joao", 1, "Prof. do Centro de...", "CCHLA"));
+		evaluableUserService.insert(new Professor("Maria", 2, "Prof. do Departamento de Informática...", "DIMAP"));
+		evaluableUserService.insert(new Professor("Joana", 3, "Prof. do Centro de...", "CCET"));
 		
 		evaluableItemService.insert(new Disciplina(9, "FMC", "DIMAP"));
 		evaluableItemService.insert(new Disciplina(10, "Literatura", "CCHLA"));

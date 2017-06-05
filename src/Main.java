@@ -26,14 +26,14 @@ public class Main {
 		
 		// ==================
 		UserDao userDao = new UserDao();
-		User user = new User("carlosant");
-		User user2 = new User("jonathanrocha");
+		User user = new User("carlosant", 1);
+		User user2 = new User("jonathanrocha", 2);
 		
 		userDao.insert(user);
 		userDao.insert(user2);
 		
 		List<User> usuarios = userDao.searchAll();
-		System.out.println("Usuários: ");
+		System.out.println("Usuarios: ");
 		Iterator<User> it = usuarios.iterator();
 		while(it.hasNext()) {
 			User u = it.next();
@@ -44,11 +44,11 @@ public class Main {
 		EvaluableItemDao evaluableItemDao = new EvaluableItemDao();
 		
 		ArrayList<SubjectiveCriterion> list1 = new ArrayList<SubjectiveCriterion>();
-		SubjectiveCriterion sub = new SubjectiveCriterion(1, "O quanto é bom?", "Descreva o quanto é bom...", null);
+		SubjectiveCriterion sub = new SubjectiveCriterion(1, "O quanto � bom?", "Descreva o quanto � bom...", null);
 		list1.add(sub);
 		
 		ArrayList<ObjectiveCriterion> list2 = new ArrayList<ObjectiveCriterion>();
-		ObjectiveCriterion ob = new ObjectiveCriterion(1, "Nota", "Dê uma nota...", 0, CriterionType.BOOL);
+		ObjectiveCriterion ob = new ObjectiveCriterion(1, "Nota", "D� uma nota...", 0, CriterionType.BOOL);
 		list2.add(ob);
 		
 		EvaluableItem item = new EvaluableItem(1, "UFRN", "Universidade Federal do Rio Grande do Norte", list2, list1);
@@ -64,11 +64,11 @@ public class Main {
 		
 		// ==================
 		EvaluableUserDao evaluableUserDao = new EvaluableUserDao();
-		EvaluableUser eUser = new EvaluableUser("Joao", "Professor joao", list2, list1);
+		EvaluableUser eUser = new EvaluableUser("Joao", 1, "Professor joao", list2, list1);
 		evaluableUserDao.insert(eUser);
 		
 		List<EvaluableUser> eUsers = evaluableUserDao.searchAll();
-		System.out.println("Usuários Avaliáveis: ");
+		System.out.println("Usu�rios Avali�veis: ");
 		Iterator<EvaluableUser> it3 = eUsers.iterator();
 		while(it3.hasNext()) {
 			EvaluableUser e = it3.next();
@@ -76,13 +76,13 @@ public class Main {
 		}
 		
 		// =================
-		System.out.println("Avaliação de Item: ");
+		System.out.println("Avaliacao de Item: ");
 		
 		Date data = new GregorianCalendar(2017, Calendar.JUNE, 4).getTime();
 		Test test = new Test();
 		
 		List<String> comentarios = new ArrayList<String>();
-		comentarios.add("É muito bom!!");
+		comentarios.add("� muito bom!!");
 		List<Integer> rates = new ArrayList<Integer>();
 		rates.add(1);
 		
@@ -94,14 +94,14 @@ public class Main {
 		while (it4.hasNext()){
 			ItemEvaluation ue = it4.next();
 			System.out.println("\tItem:" + ue.getEvaluatedItem().getName());
-			System.out.println("\tUsuário:" + ue.getUser().getName());
-			System.out.println("\tCritério Objetivo:" + ue.getComments().get(0));
-			System.out.println("\tCritério Subjtivo:" + ue.getRates().get(0));
+			System.out.println("\tUsuario:" + ue.getUser().getName());
+			System.out.println("\tCriterio Objetivo:" + ue.getComments().get(0));
+			System.out.println("\tCriterio Subjtivo:" + ue.getRates().get(0));
 			System.out.println("\tData::" + ue.getDate());
 		}
 		
 		// ================
-		System.out.println("Avaliação de Usuário Avaliável: ");
+		System.out.println("Avaliacao de Usuario Avaliavel: ");
 		List<SubjectiveCriterion> list3 = new ArrayList<SubjectiveCriterion>();
 		SubjectiveCriterion sub1 = new SubjectiveCriterion(1, "nome", "descricao", "gostei");
 		list1.add(sub1);
@@ -122,9 +122,9 @@ public class Main {
 		while (it5.hasNext()){
 			UserEvaluation ue = it5.next();
 			System.out.println("\tItem:" + ue.getEvaluatedItem().getName());
-			System.out.println("\tUsuário:" + ue.getUser().getName());
-			System.out.println("\tCritério Objetivo:" + ue.getComments().get(0));
-			System.out.println("\tCritério Subjtivo:" + ue.getRates().get(0));
+			System.out.println("\tUsuario:" + ue.getUser().getName());
+			System.out.println("\tCriterio Objetivo:" + ue.getComments().get(0));
+			System.out.println("\tCriterio Subjtivo:" + ue.getRates().get(0));
 			System.out.println("\tData::" + ue.getDate());
 		}
 		

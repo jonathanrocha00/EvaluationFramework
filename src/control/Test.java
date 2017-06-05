@@ -11,7 +11,7 @@ public class Test implements EvaluationRule<EvaluableItem, User>{
 		if (user.getName() == "carlosant"){
 			System.out.println("Pode avaliar!");
 		}else{
-			System.out.println("Avaliação não permitida");
+			System.out.println("Avaliacao nao permitida");
 			return false;
 		}
 		

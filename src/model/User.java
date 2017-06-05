@@ -7,7 +7,7 @@ public class User {
 	protected int id;
 
 	// Constructors ==================================================
-	public User(String name) {
+	public User(String name, int id) {
 		this.name = name;
 		this.id = id;
 	}

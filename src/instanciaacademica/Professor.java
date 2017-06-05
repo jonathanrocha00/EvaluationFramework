@@ -1,4 +1,4 @@
-package modelo;
+package instanciaacademica;
 
 import java.util.ArrayList;
 
@@ -24,10 +24,9 @@ public class Professor extends EvaluableUser {
 	
 	static ArrayList<SubjectiveCriterion> criteriosSubjetivosDoProfessor = new ArrayList<SubjectiveCriterion>();
 	
-	public Professor(String name, String departamento) {
+	public Professor(String name, int id, String description, String departamento) {
 		
-		super(name, "Professor " + name + " do departamento " + departamento, 
-				criteriosObjetivosDoProfessor, criteriosSubjetivosDoProfessor);
+		super(name, id, description, criteriosObjetivosDoProfessor, criteriosSubjetivosDoProfessor);
 		
 		criteriosObjetivosDoProfessor.add(personalidade);
 		criteriosObjetivosDoProfessor.add(provas);
@@ -46,3 +45,4 @@ public class Professor extends EvaluableUser {
 		this.departamento = departamento;
 	}
 }
+

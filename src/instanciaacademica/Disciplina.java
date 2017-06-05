@@ -1,4 +1,4 @@
-package modelo;
+package instanciaacademica;
 
 import java.util.ArrayList;
 
@@ -46,3 +46,4 @@ public class Disciplina extends EvaluableItem {
 		this.departamento = departamento;
 	}
 }
+

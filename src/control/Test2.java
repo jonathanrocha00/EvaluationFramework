@@ -12,7 +12,7 @@ public class Test2 implements EvaluationRule<EvaluableUser, User>{
 		if (item.getName() == "Joao"){
 			System.out.println("Pode avaliar!");
 		}else{
-			System.out.println("Não pode ser avaliado");
+			System.out.println("Nao pode ser avaliado");
 			return false;
 		}
 		
