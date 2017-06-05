@@ -19,10 +19,23 @@ import model.ObjectiveCriterion;
 import model.SubjectiveCriterion;
 import model.User;
 import model.UserEvaluation;
+import service.*;
 
 public class Main {
 	public static void main (String [] args){
 		System.out.println("Evaluation Framework");
+		
+		UserDao userDao = new UserDao();
+		EvaluableItemDao evaluableItemDao = new EvaluableItemDao();
+		EvaluableUserDao EvaluableUserDao = new EvaluableUserDao();
+		ItemEvaluationService itemEvaluationService = new ItemEvaluationService();
+		UserEvaluationService userEvaluationService = new UserEvaluationService();
+		
+		UserService userService;
+		EvaluableItemService evaluableItemService;
+		EvaluableUserService evaluableUserService;
+		ItemEvaluationService itemEvaluationService;
+		UserEvaluationService userEvaluationService;
 		
 		// ==================
 		UserDao userDao = new UserDao();
