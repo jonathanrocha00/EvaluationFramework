@@ -11,45 +11,40 @@ public class ItemEvaluationService implements ServiceInterface<ItemEvaluation>{
 	private ItemEvaluationDao itemEvaluationDao;
 	
 	// Constructors ==================================================
-	public ItemEvaluationService(ItemEvaluationDao itemEvaluationDao) {
-		this.itemEvaluationDao = itemEvaluationDao;
+	public ItemEvaluationService() {
+		itemEvaluationDao = new ItemEvaluationDao();
 	} 
 
 	// Methods =======================================================
 
 	@Override
 	public List<ItemEvaluation> searchAll() {
+		return itemEvaluationDao.searchAll();
+	}
+
+	public ItemEvaluation search(ItemEvaluation element) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ItemEvaluation search(ItemEvaluation elemento) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public void insert(ItemEvaluation newElement) {
+		itemEvaluationDao.insert(newElement);
 	}
 
 	@Override
-	public void insert(ItemEvaluation novo) {
-		// TODO Auto-generated method stub
-		
+	public void update(ItemEvaluation element) {
+		itemEvaluationDao.update(element);
 	}
 
 	@Override
-	public void update(ItemEvaluation elemento) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(ItemEvaluation elemento) {
-		// TODO Auto-generated method stub
-		
+	public void delete(ItemEvaluation element) {
+		itemEvaluationDao.delete(element);
 	}
 
 	@Override
 	public ItemEvaluation search(int element) {
-		// TODO Auto-generated method stub
-		return null;
+		return itemEvaluationDao.search(element);
 	}
 
 }

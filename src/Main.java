@@ -88,12 +88,19 @@ public class Main {
 		
 		Date data = new GregorianCalendar(2017, Calendar.JUNE, 4).getTime();
 		
-		ItemEvaluation itemev = new ItemEvaluation(item, user, list1, list2, data);
-		System.out.println("\tItem: " + itemev.getEvaluatedItem().getName());
-		System.out.println("\tUsuário: " + itemev.getUser().getName());
-		System.out.println("\tCritério Objetivo: " + itemev.getObjectiveCriteria().get(0).getRate());
-		System.out.println("\tCritério Subjetivo: " + itemev.getSubjectiveCriteria().get(0).getComment());
-		System.out.println("\tData: " + itemev.getDate());
+		EvaluationManagerSingleton.getInstance().evaluateItem(item, user, list1, list2, data);
+		
+		List<ItemEvaluation> itemev = EvaluationManagerSingleton.getInstance().getAllItemEvaluations();
+		
+		Iterator<ItemEvaluation> it4 = itemev.iterator();
+		while (it4.hasNext()){
+			ItemEvaluation ue = it4.next();
+			System.out.println("\tItem:" + ue.getEvaluatedItem().getName());
+			System.out.println("\tUsuário:" + ue.getUser().getName());
+			System.out.println("\tCritério Objetivo:" + ue.getObjectiveCriteria().get(0).getRate());
+			System.out.println("\tCritério Subjtivo:" + ue.getSubjectiveCriteria().get(0).getComment());
+			System.out.println("\tData::" + ue.getDate());
+		}
 		
 		// ================
 		System.out.println("Avaliação de Usuário Avaliável: ");
@@ -107,13 +114,19 @@ public class Main {
 		
 		Date data2 = new GregorianCalendar(2017, Calendar.JUNE, 4).getTime();
 		
-		UserEvaluation userev = new UserEvaluation(eUser, user, list1, list2, data);
+		EvaluationManagerSingleton.getInstance().evaluateUser(eUser, user, list1, list2, data);
 		
-		System.out.println("\tItem: " + userev.getEvaluatedItem().getName());
-		System.out.println("\tUsuário: " + userev.getUser().getName());
-		System.out.println("\tCritério Objetivo: " + userev.getObjectiveCriteria().get(0).getRate());
-		System.out.println("\tCritério Subjetivo: " + userev.getSubjectiveCriteria().get(0).getComment());
-		System.out.println("\tData: " + userev.getDate());	
+		List<UserEvaluation> userev = EvaluationManagerSingleton.getInstance().getAllUserEvaluations();
+		
+		Iterator<UserEvaluation> it5 = userev.iterator();
+		while (it5.hasNext()){
+			UserEvaluation ue = it5.next();
+			System.out.println("\tItem:" + ue.getEvaluatedItem().getName());
+			System.out.println("\tUsuário:" + ue.getUser().getName());
+			System.out.println("\tCritério Objetivo:" + ue.getObjectiveCriteria().get(0).getRate());
+			System.out.println("\tCritério Subjtivo:" + ue.getSubjectiveCriteria().get(0).getComment());
+			System.out.println("\tData::" + ue.getDate());
+		}
 		
 	}
 }
