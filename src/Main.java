@@ -5,6 +5,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
+import control.EvaluationManagerSingleton;
 import dao.EvaluableItemDao;
 import dao.EvaluableUserDao;
 import dao.UserDao;
@@ -39,7 +40,7 @@ public class Main {
 		
 		// ==================
 		EvaluableItemDao evaluableItemDao = new EvaluableItemDao();
-		EvaluableItem item = new EvaluableItem("UFRN", "Universidade Federal do Rio Grande do Norte");
+		EvaluableItem item = new EvaluableItem(1, "UFRN", "Universidade Federal do Rio Grande do Norte");
 		evaluableItemDao.insert(item);
 		
 		List<EvaluableItem> items = evaluableItemDao.searchAll();
@@ -49,6 +50,18 @@ public class Main {
 			EvaluableItem e = it2.next();
 			System.out.println("\t" + e.getName());
 		}
+		
+		EvaluableItem item222 = new EvaluableItem(1, "UFRNN", "universidade federal do rn");
+		evaluableItemDao.update(item222);
+		
+		items = evaluableItemDao.searchAll();
+		System.out.println("Itens: ");
+		Iterator<EvaluableItem> it222 = items.iterator();
+		while(it222.hasNext()) {
+			EvaluableItem f = it222.next();
+			System.out.println("\t" + f.getName());
+		}
+		
 		
 		// ==================
 		EvaluableUserDao evaluableUserDao = new EvaluableUserDao();
@@ -66,11 +79,11 @@ public class Main {
 		// =================
 		System.out.println("Avaliação de Item: ");
 		List<SubjectiveCriterion> list1 = new ArrayList<SubjectiveCriterion>();
-		SubjectiveCriterion sub = new SubjectiveCriterion("nome", "descricao", "gostei");
+		SubjectiveCriterion sub = new SubjectiveCriterion(1, "nome", "descricao", "gostei");
 		list1.add(sub);
 		
 		List<ObjectiveCriterion> list2 = new ArrayList<ObjectiveCriterion>();
-		ObjectiveCriterion ob = new ObjectiveCriterion("nome", "descricao", 0, CriterionType.BOOL);
+		ObjectiveCriterion ob = new ObjectiveCriterion(1, "nome", "descricao", 0, CriterionType.BOOL);
 		list2.add(ob);
 		
 		Date data = new GregorianCalendar(2017, Calendar.JUNE, 4).getTime();
@@ -85,22 +98,22 @@ public class Main {
 		// ================
 		System.out.println("Avaliação de Usuário Avaliável: ");
 		List<SubjectiveCriterion> list3 = new ArrayList<SubjectiveCriterion>();
-		SubjectiveCriterion sub1 = new SubjectiveCriterion("nome", "descricao", "gostei");
+		SubjectiveCriterion sub1 = new SubjectiveCriterion(1, "nome", "descricao", "gostei");
 		list1.add(sub1);
 		
 		List<ObjectiveCriterion> list4 = new ArrayList<ObjectiveCriterion>();
-		ObjectiveCriterion ob2 = new ObjectiveCriterion("nome", "descricao", 0, CriterionType.BOOL);
+		ObjectiveCriterion ob2 = new ObjectiveCriterion(1, "nome", "descricao", 0, CriterionType.BOOL);
 		list2.add(ob2);
 		
 		Date data2 = new GregorianCalendar(2017, Calendar.JUNE, 4).getTime();
 		
 		UserEvaluation userev = new UserEvaluation(eUser, user, list1, list2, data);
+		
 		System.out.println("\tItem: " + userev.getEvaluatedItem().getName());
 		System.out.println("\tUsuário: " + userev.getUser().getName());
 		System.out.println("\tCritério Objetivo: " + userev.getObjectiveCriteria().get(0).getRate());
 		System.out.println("\tCritério Subjetivo: " + userev.getSubjectiveCriteria().get(0).getComment());
-		System.out.println("\tData: " + userev.getDate());
-		
+		System.out.println("\tData: " + userev.getDate());	
 		
 	}
 }

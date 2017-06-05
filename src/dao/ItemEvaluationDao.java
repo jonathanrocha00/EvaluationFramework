@@ -12,6 +12,7 @@ public class ItemEvaluationDao implements DaoInterface<ItemEvaluation>{
 		return null;
 	}
 
+	@Override
 	public ItemEvaluation search(int elemento) {
 		// TODO Auto-generated method stub
 		return null;
@@ -24,7 +25,7 @@ public class ItemEvaluationDao implements DaoInterface<ItemEvaluation>{
 	}
 
 	@Override
-	public void update() {
+	public void update(ItemEvaluation elemento) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -33,12 +34,6 @@ public class ItemEvaluationDao implements DaoInterface<ItemEvaluation>{
 	public void delete(ItemEvaluation elemento) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public ItemEvaluation search(String elementName) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	

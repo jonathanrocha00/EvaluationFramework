@@ -20,8 +20,8 @@ public class EvaluableItemService implements ServiceInterface<EvaluableItem>{
 		return evaluableItemDAO.searchAll();
 	}
 	
-	public EvaluableItem search(String elementName) {
-		return evaluableItemDAO.search(elementName);
+	public EvaluableItem search(int element) {
+		return evaluableItemDAO.search(element);
 	}
 	
 	public void insert(EvaluableItem newElement) {
@@ -29,8 +29,8 @@ public class EvaluableItemService implements ServiceInterface<EvaluableItem>{
 	}
 	
 	// Not implemented.
-	public void update() {
-		evaluableItemDAO.update();
+	public void update(EvaluableItem element) {
+		evaluableItemDAO.update(element);
 	}
 	
 	public void delete(EvaluableItem element) {

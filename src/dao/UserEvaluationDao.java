@@ -24,7 +24,7 @@ public class UserEvaluationDao implements DaoInterface<UserEvaluation>{
 	}
 
 	@Override
-	public void update() {
+	public void update(UserEvaluation elemento) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -34,13 +34,5 @@ public class UserEvaluationDao implements DaoInterface<UserEvaluation>{
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public UserEvaluation search(String elementName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 
 }

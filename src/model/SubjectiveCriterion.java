@@ -5,8 +5,8 @@ public class SubjectiveCriterion extends FrameworkObject {
 	private String comment;
 	
 	// Constructors ====================================================
-	public SubjectiveCriterion(String name, String description, String comment) {
-		super(name, description);
+	public SubjectiveCriterion(int id, String name, String description, String comment) {
+		super(id, name, description);
 		this.comment = comment;
 	}
 	

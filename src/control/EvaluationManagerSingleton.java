@@ -38,4 +38,8 @@ public class EvaluationManagerSingleton {
 		userEvaluationDao.insert(new UserEvaluation(userToBeEvaluated, userWhoEvaluated, subjectiveCriteria, objectiveCriteria, date));
 		
 	}
+	
+	public List<ItemEvaluation> itemEvaluations(){
+		return itemEvaluationDao.searchAll();
+	}
 }

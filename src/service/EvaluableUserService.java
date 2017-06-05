@@ -20,16 +20,16 @@ public class EvaluableUserService implements ServiceInterface<EvaluableUser> {
 		return evaluableUserDao.searchAll();
 	}
 
-	public EvaluableUser search(String elementName) {
-		return evaluableUserDao.search(elementName);
+	public EvaluableUser search(int element) {
+		return evaluableUserDao.search(element);
 	}
 
 	public void insert(EvaluableUser newElement) {
 		evaluableUserDao.insert(newElement);
 	}
 
-	public void update() {
-		evaluableUserDao.update();
+	public void update(EvaluableUser element) {
+		evaluableUserDao.update(element);
 	}
 
 	public void delete(EvaluableUser element) {

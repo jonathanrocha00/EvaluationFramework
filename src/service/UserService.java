@@ -20,16 +20,16 @@ public class UserService implements ServiceInterface<User>{
 		return userDao.searchAll();
 	}
 	
-	public User search(String elementName) {
-		return userDao.search(elementName);
+	public User search(int element) {
+		return userDao.search(element);
 	}
 	
 	public void insert(User newElement) {
 		userDao.insert(newElement);
 	}
 	
-	public void update() {
-		userDao.update();
+	public void update(User element) {
+		userDao.update(element);
 	}
 	
 	public void delete(User element) {

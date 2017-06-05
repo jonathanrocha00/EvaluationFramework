@@ -35,7 +35,7 @@ public class ItemEvaluationService implements ServiceInterface<ItemEvaluation>{
 	}
 
 	@Override
-	public void update() {
+	public void update(ItemEvaluation elemento) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -47,7 +47,7 @@ public class ItemEvaluationService implements ServiceInterface<ItemEvaluation>{
 	}
 
 	@Override
-	public ItemEvaluation search(String elementName) {
+	public ItemEvaluation search(int element) {
 		// TODO Auto-generated method stub
 		return null;
 	}

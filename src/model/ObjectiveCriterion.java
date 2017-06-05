@@ -6,8 +6,8 @@ public class ObjectiveCriterion extends FrameworkObject {
 	private CriterionType criterionType;
 	
 	// Constructors =====================================================
-	public ObjectiveCriterion(String name, String description, int rate, CriterionType criterionType) {
-		super(name, description);
+	public ObjectiveCriterion(int id, String name, String description, int rate, CriterionType criterionType) {
+		super(id, name, description);
 		this.rate = rate;
 		this.criterionType = criterionType;
 	}

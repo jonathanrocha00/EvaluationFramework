@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import model.EvaluableUser;
@@ -13,13 +14,15 @@ public class EvaluableUserDao implements DaoInterface<EvaluableUser>{
 		evaluableUserList = new ArrayList<EvaluableUser>();
 	}
 	
+	@Override
 	public List<EvaluableUser> searchAll() {
 		return evaluableUserList;
 	}
 	
-	public EvaluableUser search(String elementName) {
+	@Override
+	public EvaluableUser search(int element) {
 		for (int i = 0; i < evaluableUserList.size(); i++) {
-			if (evaluableUserList.get(i).getName().equals(elementName)) {
+			if (evaluableUserList.get(i).getId() == element) {
 				return evaluableUserList.get(i);
 			}
 		}
@@ -27,15 +30,25 @@ public class EvaluableUserDao implements DaoInterface<EvaluableUser>{
 		return null;
 	}
 	
+	@Override
 	public void insert(EvaluableUser newElement) {
 		evaluableUserList.add(newElement);
 	}
 	
-	// Not implemented.
-	public void update() {
-		throw new UnsupportedOperationException();
+	@Override
+	public void update(EvaluableUser element) {
+		Iterator<EvaluableUser> it = evaluableUserList.iterator();
+		while(it.hasNext()) {
+			EvaluableUser eu = it.next();
+			
+			if(eu.getId() == element.getId()) {
+				eu.setName(element.getName());
+				eu.setDescription(element.getDescription());
+			}
+		}
 	}
 	
+	@Override
 	public void delete(EvaluableUser element) {
 		evaluableUserList.remove(element);
 	}
