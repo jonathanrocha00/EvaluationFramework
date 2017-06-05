@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import control.EvaluationManagerSingleton;
+import control.Test;
+import control.Test2;
 import dao.EvaluableItemDao;
 import dao.EvaluableUserDao;
 import dao.UserDao;
@@ -87,8 +89,9 @@ public class Main {
 		list2.add(ob);
 		
 		Date data = new GregorianCalendar(2017, Calendar.JUNE, 4).getTime();
+		Test test = new Test();
 		
-		EvaluationManagerSingleton.getInstance().evaluateItem(item, user, list1, list2, data);
+		EvaluationManagerSingleton.getInstance().evaluateItem(test, item, user2, list1, list2, data);
 		
 		List<ItemEvaluation> itemev = EvaluationManagerSingleton.getInstance().getAllItemEvaluations();
 		
@@ -114,7 +117,9 @@ public class Main {
 		
 		Date data2 = new GregorianCalendar(2017, Calendar.JUNE, 4).getTime();
 		
-		EvaluationManagerSingleton.getInstance().evaluateUser(eUser, user, list1, list2, data);
+		Test2 test2 = new Test2();
+		
+		EvaluationManagerSingleton.getInstance().evaluateUser(test2, eUser, user, list1, list2, data);
 		
 		List<UserEvaluation> userev = EvaluationManagerSingleton.getInstance().getAllUserEvaluations();
 		
