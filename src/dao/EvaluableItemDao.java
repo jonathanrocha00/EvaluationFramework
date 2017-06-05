@@ -1,41 +1,41 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.EvaluableItem;
 
 public class EvaluableItemDao implements DaoInterface<EvaluableItem>{
-
-	@Override
-	public List<EvaluableItem> searchAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public EvaluableItem search(int elemento) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void insert(EvaluableItem novo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(EvaluableItem elemento) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
-
+	private ArrayList<EvaluableItem> evaluableItemList;
+	
+	public EvaluableItemDao() {
+		evaluableItemList = new ArrayList<EvaluableItem>();
+	}
+	
+	public List<EvaluableItem> searchAll() {
+		return evaluableItemList;
+	}
+	
+	public EvaluableItem search(String elementName) {
+		for (int i = 0; i < evaluableItemList.size(); i++) {
+			if (evaluableItemList.get(i).getName().equals(elementName)) {
+				return evaluableItemList.get(i);
+			}
+		}
+		
+		return null;
+	}
+	public void insert(EvaluableItem newElement) {
+		evaluableItemList.add(newElement);
+	}
+	
+	// Not implemented.
+	public void update() {
+		throw new UnsupportedOperationException();
+	}
+	
+	public void delete(EvaluableItem element) {
+		evaluableItemList.remove(element);
+	}
 }

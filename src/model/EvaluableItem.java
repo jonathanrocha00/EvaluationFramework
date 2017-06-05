@@ -7,8 +7,8 @@ public class EvaluableItem extends FrameworkObject {
 	// Attributes ====================================================
 	
 	// Constructors ==================================================
-	public EvaluableItem(int id, String name, String description) {
-		super(id, name, description);
+	public EvaluableItem(String name, String description) {
+		super(name, description);
 	}
 	// Methods =======================================================
 	public List<Evaluation> getReceivedEvaluations() {

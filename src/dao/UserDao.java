@@ -1,41 +1,42 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.User;
 
-public class UserDao implements DaoInterface<User>{
-
-	@Override
-	public List<User> searchAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public User search(int elemento) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void insert(User novo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(User elemento) {
-		// TODO Auto-generated method stub
-		
-	}
-
+public class UserDao implements DaoInterface<User> {
 	
-
+	private ArrayList<User> userList;
+	
+	public UserDao() {
+		userList = new ArrayList<User>();
+	}
+	
+	public List<User> searchAll() {
+		return userList;
+	}
+	
+	public User search(String elementName) {
+		for (int i = 0; i < userList.size(); i++) {
+			if (userList.get(i).getName().equals(elementName)) {
+				return userList.get(i);
+			}
+		}
+		
+		return null;
+	}
+	
+	public void insert(User newElement) {
+		userList.add(newElement);
+	}
+	
+	// Not implemented.
+	public void update() {
+		throw new UnsupportedOperationException();
+	}
+	
+	public void delete(User element) {
+		userList.remove(element);
+	}
 }

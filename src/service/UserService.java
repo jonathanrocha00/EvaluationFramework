@@ -2,49 +2,37 @@ package service;
 
 import java.util.List;
 
-import dao.UserDao;
+import dao.DaoInterface;
 import model.User;
 
 public class UserService implements ServiceInterface<User>{
 	
 	// Attributes ====================================================
-	private UserDao userDao;
+	private DaoInterface<User> userDao;
 	
 	// Constructors ==================================================
-	public UserService(UserDao userDao) {
+	public UserService(DaoInterface<User> userDao) {
 		this.userDao = userDao;
 	} 
 	
 	// Methods =======================================================
-
-	@Override
 	public List<User> searchAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.searchAll();
 	}
-
-	@Override
-	public User search(User elemento) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public User search(String elementName) {
+		return userDao.search(elementName);
 	}
-
-	@Override
-	public void insert(User novo) {
-		// TODO Auto-generated method stub
-		
+	
+	public void insert(User newElement) {
+		userDao.insert(newElement);
 	}
-
-	@Override
+	
 	public void update() {
-		// TODO Auto-generated method stub
-		
+		userDao.update();
 	}
-
-	@Override
-	public void delete(User elemento) {
-		// TODO Auto-generated method stub
-		
+	
+	public void delete(User element) {
+		userDao.delete(element);
 	}
-
 }

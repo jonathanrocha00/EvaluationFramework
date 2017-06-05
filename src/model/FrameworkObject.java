@@ -3,26 +3,16 @@ package model;
 public abstract class FrameworkObject {
 	
 	// Attributes =====================================================
-	protected int id;
 	protected String name;
 	protected String description;
 	
 	// Constructors ===================================================
-	public FrameworkObject(int id, String name, String description) {
-		this.id = id;
+	public FrameworkObject(String name, String description) {
 		this.name = name;
 		this.description = description;
 	}
 	
 	// Methods ========================================================
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getName() {
 		return name;
 	}

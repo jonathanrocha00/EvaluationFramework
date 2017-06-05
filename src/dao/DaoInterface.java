@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface DaoInterface <T>{
 	public List<T> searchAll();
-	public T search(int elemento);
-	public void insert(T novo);
+	public T search(String elementName);
+	public void insert(T newElement);
 	public void update();
-	public void delete(T elemento);
+	public void delete(T element);
 }
