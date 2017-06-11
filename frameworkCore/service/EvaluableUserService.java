@@ -2,7 +2,6 @@ package service;
 
 import java.util.List;
 
-import dao.DaoInterface;
 import dao.EvaluableUserDao;
 import model.EvaluableUser;
 

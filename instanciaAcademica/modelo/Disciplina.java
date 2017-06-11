@@ -1,4 +1,4 @@
-package instanciaacademica;
+package modelo;
 
 import java.util.ArrayList;
 

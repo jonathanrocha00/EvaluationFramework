@@ -1,9 +1,12 @@
-package instanciaacademica;
+package controladores;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.*;
+import modelo.Aluno;
+import modelo.Disciplina;
+import modelo.Professor;
 import service.*;
 
 public class Main {
@@ -47,6 +50,7 @@ public class Main {
 			
 			
 		}
+		// Caso tenha escolhido [1] - disciplinas
 		else if (input == 2){
 			for (int i = 0; i < evaluableItemService.searchAll().size(); i++) {
 				System.out.println(evaluableItemService.searchAll().get(i).getId() + " - " + evaluableItemService.searchAll().get(i).getName() + ", " + evaluableItemService.searchAll().get(i).getDescription());
@@ -64,8 +68,7 @@ public class Main {
 		
 		
 		// Recebe qual item ou usuário será avaliado
-		Scanner scanner = new Scanner(System.in);
-		int input = scanner.nextInt();
+		input = scanner.nextInt();
 		System.out.println("Você inseriu " + input);
 		
 		for (int i = 0; i < evaluableUserService.searchAll().size(); i++) {
