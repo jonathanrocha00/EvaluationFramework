@@ -1,7 +1,6 @@
 package controladores;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import model.*;
 import modelo.Aluno;
@@ -27,13 +26,12 @@ public class Main {
 		
 		evaluableItemService.insert(new Disciplina(9, "FMC", "DIMAP"));
 		evaluableItemService.insert(new Disciplina(10, "Literatura", "CCHLA"));
-		evaluableItemService.insert(new Disciplina(50, "Física", "CCET"));
+		evaluableItemService.insert(new Disciplina(9, "Física", "CCET"));
 		
 		System.out.println("=== Bem vindo ao AvAliado ===");
 		System.out.println("");
-		
-		// Pergunta ao usuário se ele deseja avalair professores ou disciplinas e recebe a resposta
 		System.out.println("=== O que deseja avaliar? ===");
+<<<<<<< HEAD:instanciaAcademica/controladores/Main.java
 		System.out.println("=== Insira [1] para avaliar professores ===");
 		System.out.println("=== Insira [2] para avaliar disciplinas ===");
 		Scanner scanner = new Scanner(System.in);
@@ -70,19 +68,16 @@ public class Main {
 		// Recebe qual item ou usuário será avaliado
 		input = scanner.nextInt();
 		System.out.println("Você inseriu " + input);
+=======
+>>>>>>> parent of 74a0b04... Encaminhando Main do Avaliado:src/instanciaacademica/Main.java
 		
 		for (int i = 0; i < evaluableUserService.searchAll().size(); i++) {
-			if (evaluableUserService.searchAll().get(i).getId() == input) {
-				EvaluableUser usuarioSendoAvaliado = evaluableUserService.searchAll().get(i);
-			}
+			System.out.println(evaluableUserService.searchAll().get(i).getName() + " - " + evaluableUserService.searchAll().get(i).getDescription());
 		}
 		for (int i = 0; i < evaluableItemService.searchAll().size(); i++) {
-			if (evaluableItemService.searchAll().get(i).getId() == input) {
-				EvaluableItem itemSendoAvaliado = evaluableItemService.searchAll().get(i);
-			}
+			System.out.println(evaluableItemService.searchAll().get(i).getName() + " - " + evaluableItemService.searchAll().get(i).getDescription());
 		}
 		
-		System.out.println("=== Você quer avaliar o ");
 	}
 
 }
