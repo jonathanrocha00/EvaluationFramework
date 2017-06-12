@@ -2,12 +2,15 @@ package instanciaacademica;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.*;
 import service.*;
 
 public class Main {
+	
+	
 
 	public static void main(String[] args) {
 		
@@ -26,7 +29,7 @@ public class Main {
 		evaluableItemService.insert(new Disciplina("Física", "CCET"));
 		
 		Scanner scanner = new Scanner(System.in);
-		int inputNum;
+		int inputNum = 0;
 		String inputText;
 		
 		System.out.println("=== Bem vindo ao AvAliado ===");
@@ -49,8 +52,12 @@ public class Main {
 			System.out.println("=== Insira [3] para ver avaliações sobre professores ===");
 			System.out.println("=== Insira [4] para ver avaliações sobre disciplinas ===");
 			System.out.println("=== Insira [5] para logar como outro usuario ===");
-			inputNum = scanner.nextInt();
 			
+			
+			inputText = scanner.nextLine();
+			
+			inputNum = parseInt(inputText);
+
 			// Caso tenha escolhido [1] - avaliando professores
 			if (inputNum == 1) {
 				for (int i = 0; i < evaluableUserService.searchAll().size(); i++) {
@@ -59,7 +66,10 @@ public class Main {
 				
 				System.out.println("=== Insira o número do professor que deseja avaliar ===");
 				
-				inputNum = scanner.nextInt();
+				
+				inputText = scanner.nextLine();
+				
+				inputNum = parseInt(inputText);
 				
 				EvaluableUser professorSendoAvaliado = evaluableUserService.search(inputNum);
 				
@@ -80,7 +90,10 @@ public class Main {
 							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com 1 ou 0 ===");
 						}
 
-						inputNum = scanner.nextInt();
+						
+						inputText = scanner.nextLine();
+						
+						inputNum = parseInt(inputText);
 						
 						criterio.setRate(inputNum);
 					}
@@ -95,11 +108,7 @@ public class Main {
 					for (SubjectiveCriterion criterio: criteriosSubjetivos) {
 						System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com um texto ===");
 						
-						// Precisa disso pro Java ler a linha certa (aiai Java...)
-						String clearBuffer = scanner.nextLine();
-						
 						inputText = scanner.nextLine();
-						
 						criterio.setComment(inputText);
 					}
 					System.out.println("=== Você avaliou " + professorSendoAvaliado.getName() + " dessa maneira: ===");
@@ -133,7 +142,10 @@ public class Main {
 				
 				System.out.println("=== Insira o número da disciplina que deseja avaliar ===");
 				
-				inputNum = scanner.nextInt();
+				
+				inputText = scanner.nextLine();
+				
+				inputNum = parseInt(inputText);
 				
 				EvaluableItem disciplinaSendoAvaliada = evaluableItemService.search(inputNum);
 				
@@ -154,7 +166,9 @@ public class Main {
 							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com 1 ou 0 ===");
 						}
 						
-						inputNum = scanner.nextInt();
+						inputText = scanner.nextLine();
+						
+						inputNum = parseInt(inputText);
 						
 						criterio.setRate(inputNum);
 					}
@@ -169,8 +183,6 @@ public class Main {
 					for (SubjectiveCriterion criterio: criteriosSubjetivos) {
 						System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com um texto ===");
 						
-						// Precisa disso pro Java ler a linha certa (aiai Java...)
-						String clearBuffer = scanner.nextLine();
 						
 						inputText = scanner.nextLine();
 						
@@ -208,15 +220,18 @@ public class Main {
 				
 				for (UserEvaluation avaliacao: avaliacoesDeProfessores) {
 					System.out.println("Avaliação feita por " + avaliacao.getUser().getName() + " sobre o professor " + avaliacao.getEvaluatedItem().getName());
-				
-				
-					// TODO: Lógica de exibir as avaliações 
-				
-				
+					
+					for (ObjectiveCriterion criterio: avaliacao.getRates()) {
+						System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
+					}
+					for (SubjectiveCriterion criterio: avaliacao.getComments()) {
+						System.out.println("\t> " + criterio.getName() + ": ");
+						System.out.println("\t\t" + criterio.getComment());
+					}
 				}
 			}
 			
-			// Caso tenha escolhido [4] - ver avaliações de professores
+			// Caso tenha escolhido [4] - ver avaliações de disciplinas
 			else if (inputNum == 4){
 				
 				System.out.println("=== Mostrando avaliações feitas sobre disciplinas... ===");
@@ -226,10 +241,13 @@ public class Main {
 				for (ItemEvaluation avaliacao: avaliacoesDeDisciplinas) {
 					System.out.println("Avaliação feita por " + avaliacao.getUser().getName() + " sobre o professor " + avaliacao.getEvaluatedItem().getName());
 				
-				
-					// TODO: Lógica de exibir as avaliações 
-				
-				
+					for (ObjectiveCriterion criterio: avaliacao.getRates()) {
+						System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
+					}
+					for (SubjectiveCriterion criterio: avaliacao.getComments()) {
+						System.out.println("\t> " + criterio.getName() + ": ");
+						System.out.println("\t\t" + criterio.getComment());
+					}				
 				}
 			}
 			
@@ -237,19 +255,29 @@ public class Main {
 			else if (inputNum == 5) {
 				System.out.println("=== Quem é você? ===");
 				
-				String clearBuffer = scanner.nextLine();
 				inputText = scanner.nextLine();
+				
 				usuarioAvaliando = new User(inputText);
 				userService.insert(usuarioAvaliando);
 			}
 			
 			// Caso tenha sido escolhido numero inexistente
-			else {
+			else{
 				System.out.println("=== Não existe essa opção no menu. ===");
 			}
 		}
 		
 		
 		
+	}
+	
+	public static int parseInt(String opcao){
+		Scanner scn = new Scanner(System.in);
+		
+		while(!opcao.matches("^\\d+(\\.\\d+)?")){
+			System.out.println("=== Não existe essa opção no menu. ===");
+			opcao = scn.nextLine();
+		}
+		return Integer.parseInt(opcao);
 	}
 }
