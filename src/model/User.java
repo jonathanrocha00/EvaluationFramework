@@ -5,11 +5,14 @@ public class User {
 	// Attributes ====================================================
 	protected String name;
 	protected int id;
+	static int currentId = 1;
 
 	// Constructors ==================================================
-	public User(String name, int id) {
+	public User(String name) {
 		this.name = name;
-		this.id = id;
+		this.id = currentId;
+		
+		currentId++;
 	}
 	
 	// Methods =======================================================

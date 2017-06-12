@@ -9,7 +9,7 @@ public class UserEvaluation extends Evaluation {
 	private EvaluableUser evaluatedUser;
 	
 	// Constructors ==================================================
-	public UserEvaluation(EvaluableUser evaluatedUser, User user, List<String> comments, List<Integer> rates, Date date) {
+	public UserEvaluation(EvaluableUser evaluatedUser, User user, List<SubjectiveCriterion> comments, List<ObjectiveCriterion> rates, Date date) {
 		super(user, comments, rates, date);
 		this.evaluatedUser = evaluatedUser;
 	}

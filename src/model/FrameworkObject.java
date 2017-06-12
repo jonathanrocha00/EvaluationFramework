@@ -7,11 +7,15 @@ public abstract class FrameworkObject {
 	protected String name;
 	protected String description;
 	
+	static int currentId = 1;
+	
 	// Constructors ===================================================
-	public FrameworkObject(int id, String name, String description) {
-		this.id = id;
+	public FrameworkObject(String name, String description) {
+		this.id = currentId;
 		this.name = name;
 		this.description = description;
+		
+		currentId++;
 	}
 	
 	// Methods ========================================================

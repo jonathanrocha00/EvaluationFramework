@@ -9,13 +9,8 @@ public class EvaluableItem extends FrameworkObject {
 	private ArrayList<SubjectiveCriterion> subjectiveCriteriaToBeEvaluated;
 	
 	// Constructors ==================================================
-	public EvaluableItem(int id, String name, String description, 
-			ArrayList<ObjectiveCriterion> objectiveCriteriaToBeEvaluated, 
-			ArrayList<SubjectiveCriterion> subjectiveCriteriaToBeEvaluated) {
-		super(id, name, description);
-		
-		this.objectiveCriteriaToBeEvaluated = objectiveCriteriaToBeEvaluated;
-		this.subjectiveCriteriaToBeEvaluated = subjectiveCriteriaToBeEvaluated;
+	public EvaluableItem(String name, String description) {
+		super(name, description);
 	}
 	// Methods =======================================================
 	public ArrayList<ObjectiveCriterion> getObjectiveCriteriaToBeEvaluated() {

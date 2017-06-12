@@ -6,13 +6,13 @@ import java.util.List;
 public abstract class Evaluation {
 	// Attributes =================================================
 	protected User user;
-	protected List<String> comments;
-	protected List<Integer> rates;
+	protected List<SubjectiveCriterion> comments;
+	protected List<ObjectiveCriterion> rates;
 	protected Date date;
 	
 	// Constructors ================================================
-	public Evaluation(User user, List<String> comments,
-			List<Integer> rates, Date date) {
+	public Evaluation(User user, List<SubjectiveCriterion> comments,
+			List<ObjectiveCriterion> rates, Date date) {
 		super();
 		this.user = user;
 		this.comments = comments;
@@ -37,19 +37,19 @@ public abstract class Evaluation {
 		this.date = date;
 	}
 
-	public List<String> getComments() {
+	public List<SubjectiveCriterion> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<String> comments) {
+	public void setComments(List<SubjectiveCriterion> comments) {
 		this.comments = comments;
 	}
 
-	public List<Integer> getRates() {
+	public List<ObjectiveCriterion> getRates() {
 		return rates;
 	}
 
-	public void setRates(List<Integer> rates) {
+	public void setRates(List<ObjectiveCriterion> rates) {
 		this.rates = rates;
 	}
 	
