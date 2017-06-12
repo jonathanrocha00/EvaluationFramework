@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+import dao.DaoInterface;
 import dao.EvaluableItemDao;
 import model.EvaluableItem;
 
@@ -11,39 +12,30 @@ public class EvaluableItemService implements ServiceInterface<EvaluableItem>{
 	private EvaluableItemDao evaluableItemDAO;
 	
 	// Constructors ==================================================
-	public EvaluableItemService(EvaluableItemDao evaluableItemDAO) {
-		this.evaluableItemDAO = evaluableItemDAO;
+	public EvaluableItemService() {
+		evaluableItemDAO = new EvaluableItemDao();
 	} 
 	
 	// Methods =======================================================
-	@Override
 	public List<EvaluableItem> searchAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return evaluableItemDAO.searchAll();
 	}
-
-	@Override
-	public EvaluableItem search(EvaluableItem elemento) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public EvaluableItem search(int element) {
+		return evaluableItemDAO.search(element);
 	}
-
-	@Override
-	public void insert(EvaluableItem novo) {
-		// TODO Auto-generated method stub
-		
+	
+	public void insert(EvaluableItem newElement) {
+		evaluableItemDAO.insert(newElement);
 	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	
+	// Not implemented.
+	public void update(EvaluableItem element) {
+		evaluableItemDAO.update(element);
 	}
-
-	@Override
-	public void delete(EvaluableItem elemento) {
-		// TODO Auto-generated method stub
-		
+	
+	public void delete(EvaluableItem element) {
+		evaluableItemDAO.delete(element);
 	}
 	
 }

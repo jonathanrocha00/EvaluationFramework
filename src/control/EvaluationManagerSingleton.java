@@ -3,19 +3,22 @@ package control;
 import java.util.Date;
 import java.util.List;
 
-import dao.ItemEvaluationDao;
-import dao.UserEvaluationDao;
 import model.*;
+import service.ItemEvaluationService;
+import service.UserEvaluationService;
 
 public class EvaluationManagerSingleton {
 
 	// Attributes ====================================================
 	private static EvaluationManagerSingleton singletonInstance;
-	private ItemEvaluationDao itemEvaluationDao;
-	private UserEvaluationDao userEvaluationDao;
+	
+	private ItemEvaluationService itemEvaluationService;
+	private UserEvaluationService userEvaluationService;
 
 	// Constructors ==================================================
 	private EvaluationManagerSingleton() {
+		itemEvaluationService = new ItemEvaluationService();
+		userEvaluationService = new UserEvaluationService();
 	}
 	
 	// Methods =======================================================
@@ -27,15 +30,26 @@ public class EvaluationManagerSingleton {
 		return singletonInstance;
 	}
 	
-	public void evaluateItem(EvaluableItem itemToBeEvaluated, User userWhoEvaluated, List<SubjectiveCriterion> subjectiveCriteria, List<ObjectiveCriterion> objectiveCriteria, Date date) {
+	public void evaluateItem(EvaluationRule<EvaluableItem, User> evaluationRuleItem, EvaluableItem itemToBeEvaluated, User userWhoEvaluated, List<String> comments, List<Integer> rates, Date date) {
 		
-		itemEvaluationDao.insert(new ItemEvaluation(itemToBeEvaluated, userWhoEvaluated, subjectiveCriteria, objectiveCriteria, date));
-		
+		if (evaluationRuleItem.validateEvaluation(itemToBeEvaluated, userWhoEvaluated) == true){
+			itemEvaluationService.insert(new ItemEvaluation(itemToBeEvaluated, userWhoEvaluated, comments, rates, date));
+		}
 	}
 	
-	public void evaluateUser(EvaluableUser userToBeEvaluated, User userWhoEvaluated, List<SubjectiveCriterion> subjectiveCriteria, List<ObjectiveCriterion> objectiveCriteria, Date date) {
+	public void evaluateUser(EvaluationRule<EvaluableUser, User> evaluationRuleUser, EvaluableUser userToBeEvaluated, User userWhoEvaluated, List<String> comments, List<Integer> rates, Date date) {
 		
-		userEvaluationDao.insert(new UserEvaluation(userToBeEvaluated, userWhoEvaluated, subjectiveCriteria, objectiveCriteria, date));
-		
+		if (evaluationRuleUser.validateEvaluation(userToBeEvaluated, userWhoEvaluated) == true){
+			userEvaluationService.insert(new UserEvaluation(userToBeEvaluated, userWhoEvaluated, comments, rates, date));
+		}
 	}
+	
+	public List<ItemEvaluation> getAllItemEvaluations(){
+		return itemEvaluationService.searchAll();
+	}
+	
+	public List<UserEvaluation> getAllUserEvaluations(){
+		return userEvaluationService.searchAll();
+	}
+	
 }

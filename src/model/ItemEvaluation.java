@@ -8,8 +8,8 @@ public class ItemEvaluation extends Evaluation {
 	private EvaluableItem evaluatedItem;
 	
 	// Constructors ==================================================
-	public ItemEvaluation(EvaluableItem evaluatedItem, User user, List<SubjectiveCriterion> subjectiveCriteria, List<ObjectiveCriterion> objectiveCriteria, Date date) {
-		super(user, subjectiveCriteria, objectiveCriteria, date);
+	public ItemEvaluation(EvaluableItem evaluatedItem, User user, List<String> comments, List<Integer> rates, Date date) {
+		super(user, comments, rates, date);
 		this.evaluatedItem = evaluatedItem;
 	}
 

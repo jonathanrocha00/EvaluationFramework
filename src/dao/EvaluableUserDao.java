@@ -1,41 +1,55 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import model.EvaluableUser;
 
 public class EvaluableUserDao implements DaoInterface<EvaluableUser>{
 
+	private ArrayList<EvaluableUser> evaluableUserList;
+	
+	public EvaluableUserDao() {
+		evaluableUserList = new ArrayList<EvaluableUser>();
+	}
+	
 	@Override
 	public List<EvaluableUser> searchAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return evaluableUserList;
 	}
-
-	@Override
-	public EvaluableUser search(int elemento) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void insert(EvaluableUser novo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(EvaluableUser elemento) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
-
+	@Override
+	public EvaluableUser search(int element) {
+		for (int i = 0; i < evaluableUserList.size(); i++) {
+			if (evaluableUserList.get(i).getId() == element) {
+				return evaluableUserList.get(i);
+			}
+		}
+		
+		return null;
+	}
+	
+	@Override
+	public void insert(EvaluableUser newElement) {
+		evaluableUserList.add(newElement);
+	}
+	
+	@Override
+	public void update(EvaluableUser element) {
+		Iterator<EvaluableUser> it = evaluableUserList.iterator();
+		while(it.hasNext()) {
+			EvaluableUser eu = it.next();
+			
+			if(eu.getId() == element.getId()) {
+				eu.setName(element.getName());
+				eu.setDescription(element.getDescription());
+			}
+		}
+	}
+	
+	@Override
+	public void delete(EvaluableUser element) {
+		evaluableUserList.remove(element);
+	}
 }
