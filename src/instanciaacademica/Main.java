@@ -48,7 +48,7 @@ public class Main {
 			System.out.println("=== Insira [2] para avaliar disciplinas ===");
 			System.out.println("=== Insira [3] para ver avaliações sobre professores ===");
 			System.out.println("=== Insira [4] para ver avaliações sobre disciplinas ===");
-			System.out.println("=== Insira [4] para logar como outro usuario ===");
+			System.out.println("=== Insira [5] para logar como outro usuario ===");
 			inputNum = scanner.nextInt();
 			
 			// Caso tenha escolhido [1] - avaliando professores
@@ -215,6 +215,7 @@ public class Main {
 				}
 			}
 			
+			// Caso tenha escolhido [5] - trocar de usuário
 			else if (inputNum == 5) {
 				System.out.println("=== Quem é você? ===");
 				inputText = scanner.nextLine();
