@@ -111,6 +111,10 @@ public class Main {
 					// Criando objeto da avaliação
 					UserEvaluation avaliacao = new UserEvaluation(professorSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					
+					
+					// TODO: Lógica de validação da avaliação
+					
+					
 					userEvaluationService.insert(avaliacao);
 					
 				}
@@ -181,6 +185,10 @@ public class Main {
 					// Criando objeto da avaliação
 					ItemEvaluation avaliacao = new ItemEvaluation(disciplinaSendoAvaliada, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					
+					
+					// TODO: Lógica de validação da avaliação
+					
+					
 					itemEvaluationService.insert(avaliacao);
 					
 				}
@@ -200,6 +208,11 @@ public class Main {
 				
 				for (UserEvaluation avaliacao: avaliacoesDeProfessores) {
 					System.out.println("Avaliação feita por " + avaliacao.getUser().getName() + " sobre o professor " + avaliacao.getEvaluatedItem().getName());
+				
+				
+					// TODO: Lógica de exibir as avaliações 
+				
+				
 				}
 			}
 			
@@ -212,12 +225,19 @@ public class Main {
 				
 				for (ItemEvaluation avaliacao: avaliacoesDeDisciplinas) {
 					System.out.println("Avaliação feita por " + avaliacao.getUser().getName() + " sobre o professor " + avaliacao.getEvaluatedItem().getName());
+				
+				
+					// TODO: Lógica de exibir as avaliações 
+				
+				
 				}
 			}
 			
 			// Caso tenha escolhido [5] - trocar de usuário
 			else if (inputNum == 5) {
 				System.out.println("=== Quem é você? ===");
+				
+				String clearBuffer = scanner.nextLine();
 				inputText = scanner.nextLine();
 				usuarioAvaliando = new User(inputText);
 				userService.insert(usuarioAvaliando);
