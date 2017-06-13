@@ -11,23 +11,25 @@ public class Filme extends EvaluableItem {
 
 	private int ano;
 	private String diretor;
+	private int classificacao;
 
-	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendação", "Você gostou do filme?", 0, CriterionType.BOOL);
-	ObjectiveCriterion atuacao = new ObjectiveCriterion("Atuação", "Os atores te convenceram?", 0, CriterionType.BOOL);
+	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendaï¿½ï¿½o", "Vocï¿½ gostou do filme?", 0, CriterionType.BOOL);
+	ObjectiveCriterion atuacao = new ObjectiveCriterion("Atuaï¿½ï¿½o", "Os atores te convenceram?", 0, CriterionType.BOOL);
 	ObjectiveCriterion trilhaSonora = new ObjectiveCriterion("Trilha Sonora", "Os sons se encaixavam nas cenas?", 0, CriterionType.BOOL);
-	ObjectiveCriterion direcao = new ObjectiveCriterion("Direção", "E o diretor? Soube fazer seu papel?", 0, CriterionType.BOOL);
+	ObjectiveCriterion direcao = new ObjectiveCriterion("Direï¿½ï¿½o", "E o diretor? Soube fazer seu papel?", 0, CriterionType.BOOL);
 
-	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentário geral", "Sua hora de bancar o crítico", null);
+	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentï¿½rio geral", "Sua hora de bancar o crï¿½tico", null);
 
 	ArrayList<ObjectiveCriterion> criteriosObjetivosDoFilme = new ArrayList<ObjectiveCriterion>();
 
 	ArrayList<SubjectiveCriterion> criteriosSubjetivosDoFilme = new ArrayList<SubjectiveCriterion>();
 
-	public Filme(int id, String name, int ano, String diretor) {
-		super(name, "Filme de " + ano + " dirigindo por " + diretor + ".");
+	public Filme(String name, int ano, String diretor, int classificacao) {
+		super(name, "Filme de " + ano + " dirigindo por " + diretor + "com classificaÃ§Ã£o +" + classificacao + ".");
 		
 		criteriosObjetivosDoFilme.add(recomendacao);
 		criteriosObjetivosDoFilme.add(atuacao);
+		criteriosObjetivosDoFilme.add(trilhaSonora);
 		criteriosObjetivosDoFilme.add(direcao);
 		
 		criteriosSubjetivosDoFilme.add(comentario);
@@ -35,9 +37,9 @@ public class Filme extends EvaluableItem {
 		this.setObjectiveCriteriaToBeEvaluated(criteriosObjetivosDoFilme);
 		this.setSubjectiveCriteriaToBeEvaluated(criteriosSubjetivosDoFilme);
 		
-		
 		this.ano = ano;
 		this.diretor = diretor;
+		this.classificacao = classificacao;
 	}
 	
 	public int getAno() {
@@ -55,5 +57,13 @@ public class Filme extends EvaluableItem {
 	public void setDiretor(String diretor) {
 		this.diretor = diretor;
 	}
+
+	public int getClassificacao() {
+		return classificacao;
+	}
+
+	public void setClassificacao(int classificacao) {
+		this.classificacao = classificacao;
+	}	
 
 }

@@ -11,22 +11,23 @@ public class Serie extends EvaluableItem {
 
 	private int numeroDeEpisodios;
 	private String genero;
+	private int classificacao;
 	
-	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendação", "Você gostou da serie?", 0, CriterionType.BOOL);
-	
-	ObjectiveCriterion personagens = new ObjectiveCriterion("Personagens", "O que achou dos personagens?", 0, CriterionType.BOOL);
-	ObjectiveCriterion musicas = new ObjectiveCriterion("Músicas", "As músicas merecem ser baixadas?", 0, CriterionType.BOOL);
-	ObjectiveCriterion duracao = new ObjectiveCriterion("Duração", "A série dura o quanto tem que durar?", 0, CriterionType.BOOL);
+	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendaï¿½ï¿½o", "Vocï¿½ gostou da serie?", 0, CriterionType.BOOL);
+	ObjectiveCriterion personagens = new ObjectiveCriterion("Personagens", "O que achou dos personagens?", 0, CriterionType.RATE);
+	ObjectiveCriterion musicas = new ObjectiveCriterion("Mï¿½sicas", "As mï¿½sicas merecem ser baixadas?", 0, CriterionType.BOOL);
+	ObjectiveCriterion duracao = new ObjectiveCriterion("Duraï¿½ï¿½o", "A sï¿½rie dura o quanto tem que durar?", 0, CriterionType.BOOL);
 
-	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentário geral", "Sua hora de bancar o crítico", null);
+	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentï¿½rio geral", "Sua hora de bancar o crï¿½tico", null);
 	
 	ArrayList<ObjectiveCriterion> criteriosObjetivosDaSerie = new ArrayList<ObjectiveCriterion>();
 
 	ArrayList<SubjectiveCriterion> criteriosSubjetivosDaSerie = new ArrayList<SubjectiveCriterion>();
 	
-	public Serie(String name, int numeroDeEpisodios, String genero) {
-		super(name, "Série com " + numeroDeEpisodios + " de " + genero + ".");
+	public Serie(String name, int numeroDeEpisodios, String genero, int classificacao) {
+		super(name, "Sï¿½rie com " + numeroDeEpisodios + " de " + genero + " e classificaÃ§Ã£o +" + classificacao + ".");
 
+		criteriosObjetivosDaSerie.add(recomendacao);
 		criteriosObjetivosDaSerie.add(personagens);
 		criteriosObjetivosDaSerie.add(musicas);
 		criteriosObjetivosDaSerie.add(duracao);
@@ -38,6 +39,7 @@ public class Serie extends EvaluableItem {
 		
 		this.numeroDeEpisodios = numeroDeEpisodios;
 		this.genero = genero;
+		this.classificacao = classificacao;
 	}
 	
 	public int getNumeroDeEpisodios() {
@@ -55,5 +57,15 @@ public class Serie extends EvaluableItem {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
+
+	public int getClassificacao() {
+		return classificacao;
+	}
+
+	public void setClassificacao(int classificacao) {
+		this.classificacao = classificacao;
+	}
+	
+	
 	
 }
