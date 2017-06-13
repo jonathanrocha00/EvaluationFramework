@@ -3,11 +3,12 @@ package instanciaturistica;
 import java.util.ArrayList;
 
 import model.CriterionType;
+import model.EvaluableItem;
 import model.EvaluableUser;
 import model.ObjectiveCriterion;
 import model.SubjectiveCriterion;
 
-public class Estabelecimento extends EvaluableUser {
+public class Estabelecimento extends EvaluableItem {
 
 	private String tipo;
 	private String cidade;
@@ -23,7 +24,7 @@ public class Estabelecimento extends EvaluableUser {
 	ArrayList<SubjectiveCriterion> criteriosSubjetivosDoEstabalecimento = new ArrayList<SubjectiveCriterion>();
 	
 	public Estabelecimento(String name, String cidade, String tipo) {
-		super(name, tipo + " localizado na cidade de " + cidade);
+		super(name, tipo + " localizado em " + cidade);
 
 		criteriosObjetivosDoEstabalecimento.add(recomendacao);
 		criteriosObjetivosDoEstabalecimento.add(preco);

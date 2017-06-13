@@ -22,7 +22,7 @@ public class PontoTuristico extends EvaluableItem {
 	ArrayList<SubjectiveCriterion> criteriosSubjetivosDoPontoTuristico = new ArrayList<SubjectiveCriterion>();
 	
 	public PontoTuristico(String name, String cidade) {
-		super(name, "localizado na cidade de " + cidade);
+		super(name, "localizado em " + cidade);
 		
 		criteriosObjetivosDoPontoTuristico.add(acessibilidade);
 		criteriosObjetivosDoPontoTuristico.add(periculosidade);

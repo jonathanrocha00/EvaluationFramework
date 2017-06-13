@@ -130,7 +130,7 @@ public class Main {
 				
 				// Professor não encontrado
 				else {
-					System.out.println("=== Não existe nenhum professor com esse número. O sistema será encerrado. ===");
+					System.out.println("=== Não existe nenhum professor com esse número. Você voltará ao menu inicial. ===");
 				}
 			}
 			
@@ -206,11 +206,11 @@ public class Main {
 				
 				// Disciplina não encontrada
 				else {
-					System.out.println("=== Não existe nenhuma disciplina com esse número. O sistema será encerrado. ===");
+					System.out.println("=== Não existe nenhuma disciplina com esse número. Você voltará ao menu inicial. ===");
 				}			
 			}
 			
-			// Caso tenha escolhido [2] - ver avaliações de professores
+			// Caso tenha escolhido [3] - ver avaliações de professores
 			else if (inputNum == 3){
 				verAvaliacoesDeProfessores(userEvaluationService);
 			}
