@@ -136,7 +136,7 @@ public class Main {
 						ItemEvaluation avaliacao = new ItemEvaluation(desenhoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 						
 						
-						// TODO: L�gica de valida��o da avalia��o
+						
 						
 						
 						itemEvaluationService.insert(avaliacao);
@@ -215,7 +215,7 @@ public class Main {
 						ItemEvaluation avaliacao = new ItemEvaluation(serieSendoAvaliada, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 						
 						
-						// TODO: L�gica de valida��o da avalia��o
+						
 						
 						
 						itemEvaluationService.insert(avaliacao);
@@ -294,7 +294,7 @@ public class Main {
 					ItemEvaluation avaliacao = new ItemEvaluation(filmeSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					
 					
-					// TODO: L�gica de valida��o da avalia��o
+					
 					
 					
 					itemEvaluationService.insert(avaliacao);
