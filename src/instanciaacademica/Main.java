@@ -142,7 +142,6 @@ public class Main {
 				
 				System.out.println("=== Insira o número da disciplina que deseja avaliar ===");
 				
-				
 				inputText = scanner.nextLine();
 				
 				inputNum = parseInt(inputText);
@@ -213,52 +212,17 @@ public class Main {
 			
 			// Caso tenha escolhido [2] - ver avaliações de professores
 			else if (inputNum == 3){
-				
-				System.out.println("=== Mostrando avaliações feitas sobre professores... ===");
-				
-				ArrayList<UserEvaluation> avaliacoesDeProfessores = (ArrayList<UserEvaluation>) userEvaluationService.searchAll();
-				
-				for (UserEvaluation avaliacao: avaliacoesDeProfessores) {
-					System.out.println("Avaliação feita por " + avaliacao.getUser().getName() + " sobre o professor " + avaliacao.getEvaluatedItem().getName());
-					
-					for (ObjectiveCriterion criterio: avaliacao.getRates()) {
-						System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
-					}
-					for (SubjectiveCriterion criterio: avaliacao.getComments()) {
-						System.out.println("\t> " + criterio.getName() + ": ");
-						System.out.println("\t\t" + criterio.getComment());
-					}
-				}
+				verAvaliacoesDeProfessores(userEvaluationService);
 			}
 			
 			// Caso tenha escolhido [4] - ver avaliações de disciplinas
 			else if (inputNum == 4){
-				
-				System.out.println("=== Mostrando avaliações feitas sobre disciplinas... ===");
-				
-				ArrayList<ItemEvaluation> avaliacoesDeDisciplinas = (ArrayList<ItemEvaluation>) itemEvaluationService.searchAll();
-				
-				for (ItemEvaluation avaliacao: avaliacoesDeDisciplinas) {
-					System.out.println("Avaliação feita por " + avaliacao.getUser().getName() + " sobre o professor " + avaliacao.getEvaluatedItem().getName());
-				
-					for (ObjectiveCriterion criterio: avaliacao.getRates()) {
-						System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
-					}
-					for (SubjectiveCriterion criterio: avaliacao.getComments()) {
-						System.out.println("\t> " + criterio.getName() + ": ");
-						System.out.println("\t\t" + criterio.getComment());
-					}				
-				}
+				verAvaliacoesDeDisciplinas(itemEvaluationService);
 			}
 			
 			// Caso tenha escolhido [5] - trocar de usuário
 			else if (inputNum == 5) {
-				System.out.println("=== Quem é você? ===");
-				
-				inputText = scanner.nextLine();
-				
-				usuarioAvaliando = new User(inputText);
-				userService.insert(usuarioAvaliando);
+				usuarioAvaliando = logarComNovoUsuario(userService, scanner);
 			}
 			
 			// Caso tenha sido escolhido numero inexistente
@@ -269,6 +233,54 @@ public class Main {
 		
 		
 		
+	}
+
+	private static void verAvaliacoesDeProfessores(UserEvaluationService userEvaluationService) {
+		System.out.println("=== Mostrando avaliações feitas sobre professores... ===");
+		
+		ArrayList<UserEvaluation> avaliacoesDeProfessores = (ArrayList<UserEvaluation>) userEvaluationService.searchAll();
+		
+		for (UserEvaluation avaliacao: avaliacoesDeProfessores) {
+			System.out.println("Avaliação feita por " + avaliacao.getUser().getName() + " sobre o professor " + avaliacao.getEvaluatedItem().getName());
+			
+			for (ObjectiveCriterion criterio: avaliacao.getRates()) {
+				System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
+			}
+			for (SubjectiveCriterion criterio: avaliacao.getComments()) {
+				System.out.println("\t> " + criterio.getName() + ": ");
+				System.out.println("\t\t" + criterio.getComment());
+			}
+		}
+	}
+
+	private static void verAvaliacoesDeDisciplinas(ItemEvaluationService itemEvaluationService) {
+		System.out.println("=== Mostrando avaliações feitas sobre disciplinas... ===");
+		
+		ArrayList<ItemEvaluation> avaliacoesDeDisciplinas = (ArrayList<ItemEvaluation>) itemEvaluationService.searchAll();
+		
+		for (ItemEvaluation avaliacao: avaliacoesDeDisciplinas) {
+			System.out.println("Avaliação feita por " + avaliacao.getUser().getName() + " sobre o disciplina " + avaliacao.getEvaluatedItem().getName());
+		
+			for (ObjectiveCriterion criterio: avaliacao.getRates()) {
+				System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
+			}
+			for (SubjectiveCriterion criterio: avaliacao.getComments()) {
+				System.out.println("\t> " + criterio.getName() + ": ");
+				System.out.println("\t\t" + criterio.getComment());
+			}				
+		}
+	}
+
+	private static User logarComNovoUsuario(UserService userService, Scanner scanner) {
+		String inputText;
+		User usuarioAvaliando;
+		System.out.println("=== Quem é você? ===");
+		
+		inputText = scanner.nextLine();
+		
+		usuarioAvaliando = new User(inputText);
+		userService.insert(usuarioAvaliando);
+		return usuarioAvaliando;
 	}
 	
 	public static int parseInt(String opcao){
