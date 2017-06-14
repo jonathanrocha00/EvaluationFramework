@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
+import control.EvaluationManagerSingleton;
 import model.CriterionType;
 import model.EvaluableItem;
-import model.ItemEvaluation;
 import model.ObjectiveCriterion;
 import model.SubjectiveCriterion;
 import service.EvaluableItemService;
-import service.ItemEvaluationService;
 import service.UserService;
 
 public class Main {
@@ -22,7 +21,6 @@ public class Main {
 	public static void main(String[] args) {
 		UserService userService = new UserService();
 		EvaluableItemService evaluableItemService = new EvaluableItemService();
-		ItemEvaluationService itemEvaluationService = new ItemEvaluationService();
 		
 		evaluableItemService.insert(new Desenho("Gravity Falls", 2012, "Disney Television Animation", 12));
 		evaluableItemService.insert(new Desenho("Steven Universe", 2013, "Cartoon Network Studios", 10));
@@ -133,13 +131,7 @@ public class Main {
 						}
 						
 						// Criando objeto da avalia��o
-						ItemEvaluation avaliacao = new ItemEvaluation(desenhoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
-						
-						
-						
-						
-						
-						itemEvaluationService.insert(avaliacao);
+						EvaluationManagerSingleton.getInstance().evaluateItem(regra, desenhoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					}
 				}
 				
@@ -212,13 +204,7 @@ public class Main {
 						}
 						
 						// Criando objeto da avalia��o
-						ItemEvaluation avaliacao = new ItemEvaluation(serieSendoAvaliada, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
-						
-						
-						
-						
-						
-						itemEvaluationService.insert(avaliacao);
+						EvaluationManagerSingleton.getInstance().evaluateItem(regra, serieSendoAvaliada, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					}
 				}
 				
@@ -291,13 +277,7 @@ public class Main {
 					}
 					
 					// Criando objeto da avalia��o
-					ItemEvaluation avaliacao = new ItemEvaluation(filmeSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
-					
-					
-					
-					
-					
-					itemEvaluationService.insert(avaliacao);
+					EvaluationManagerSingleton.getInstance().evaluateItem(regra, filmeSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 				}
 			}
 			
@@ -309,17 +289,17 @@ public class Main {
 			
 			// Caso tenha escolhido [4] - ver avalia��es de desenhos
 			else if (inputNum == 4){
-				verAvaliacoesDeDesenhos(itemEvaluationService);
+				EvaluationManagerSingleton.getInstance().printItemEvaluations(Desenho.class);
 			}
 			
 			// Caso tenha escolhido [5] - ver avalia��es de series
 			else if (inputNum == 5){
-				verAvaliacoesDeSeries(itemEvaluationService);
+				EvaluationManagerSingleton.getInstance().printItemEvaluations(Serie.class);
 			}
 			
 			// Caso tenha escolhido [6] - ver avalia��es de filmes
 			else if (inputNum == 6){
-				verAvaliacoesDeFilmes(itemEvaluationService);
+				EvaluationManagerSingleton.getInstance().printItemEvaluations(Filme.class);
 			}
 			
 			// Caso tenha escolhido [7] - trocar de usu�rio
@@ -334,88 +314,13 @@ public class Main {
 		}
 	}
 	
-	private static void verAvaliacoesDeDesenhos(ItemEvaluationService itemEvaluationService) {
-		System.out.println("=== Mostrando avalia��es feitas sobre desenhos... ===");
-		
-		ArrayList<ItemEvaluation> avaliacoesDeDesenhos = new ArrayList<ItemEvaluation>();
-		ArrayList<ItemEvaluation> listaAuxiliar = (ArrayList<ItemEvaluation>) itemEvaluationService.searchAll();
-		
-		for (ItemEvaluation item: listaAuxiliar) {
-			if (item.getEvaluatedItem().getClass() == Desenho.class) {
-				avaliacoesDeDesenhos.add(item);
-			}
-		}
-		
-		for (ItemEvaluation avaliacao: avaliacoesDeDesenhos) {
-			System.out.println("Avalia��o feita por " + avaliacao.getUser().getName() + " sobre " + avaliacao.getEvaluatedItem().getName());
-		
-			for (ObjectiveCriterion criterio: avaliacao.getRates()) {
-				System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
-			}
-			for (SubjectiveCriterion criterio: avaliacao.getComments()) {
-				System.out.println("\t> " + criterio.getName() + ": ");
-				System.out.println("\t\t" + criterio.getComment());
-			}				
-		}
-	}
-	
-	private static void verAvaliacoesDeSeries(ItemEvaluationService itemEvaluationService) {
-		System.out.println("=== Mostrando avalia��es feitas sobre series... ===");
-		
-		ArrayList<ItemEvaluation> avaliacoesDeSeries = new ArrayList<ItemEvaluation>();
-		ArrayList<ItemEvaluation> listaAuxiliar = (ArrayList<ItemEvaluation>) itemEvaluationService.searchAll();
-		
-		for (ItemEvaluation item: listaAuxiliar) {
-			if (item.getEvaluatedItem().getClass() == Serie.class) {
-				avaliacoesDeSeries.add(item);
-			}
-		}
-		
-		for (ItemEvaluation avaliacao: avaliacoesDeSeries) {
-			System.out.println("Avalia��o feita por " + avaliacao.getUser().getName() + " sobre " + avaliacao.getEvaluatedItem().getName());
-		
-			for (ObjectiveCriterion criterio: avaliacao.getRates()) {
-				System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
-			}
-			for (SubjectiveCriterion criterio: avaliacao.getComments()) {
-				System.out.println("\t> " + criterio.getName() + ": ");
-				System.out.println("\t\t" + criterio.getComment());
-			}				
-		}
-	}
-	
-	private static void verAvaliacoesDeFilmes(ItemEvaluationService itemEvaluationService) {
-		System.out.println("=== Mostrando avalia��es feitas sobre filmes... ===");
-		
-		ArrayList<ItemEvaluation> avaliacoesDeFilmes = new ArrayList<ItemEvaluation>();
-		ArrayList<ItemEvaluation> listaAuxiliar = (ArrayList<ItemEvaluation>) itemEvaluationService.searchAll();
-		
-		for (ItemEvaluation item: listaAuxiliar) {
-			if (item.getEvaluatedItem().getClass() == Filme.class) {
-				avaliacoesDeFilmes.add(item);
-			}
-		}
-		
-		for (ItemEvaluation avaliacao: avaliacoesDeFilmes) {
-			System.out.println("Avalia��o feita por " + avaliacao.getUser().getName() + " sobre " + avaliacao.getEvaluatedItem().getName());
-		
-			for (ObjectiveCriterion criterio: avaliacao.getRates()) {
-				System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
-			}
-			for (SubjectiveCriterion criterio: avaliacao.getComments()) {
-				System.out.println("\t> " + criterio.getName() + ": ");
-				System.out.println("\t\t" + criterio.getComment());
-			}				
-		}
-	}
-
 	private static Espectador logarComNovoUsuario(UserService userService, Scanner scanner) {
-		String inputText;
 		Espectador usuarioAvaliando;
 		System.out.println("=== Qual seu nome? ===");
 		String nome = scanner.nextLine();
-		System.out.println("=== Onde voc� mora? ===");
-		int idade = scanner.nextInt();
+		System.out.println("=== Qual a sua idade? ===");
+		String idadeTxt = scanner.nextLine();
+		int idade = parseInt(idadeTxt);
 		
 		usuarioAvaliando = new Espectador(nome, idade);
 		userService.insert(usuarioAvaliando);
