@@ -11,10 +11,10 @@ public class Professor extends EvaluableUser {
 	
 	private String departamento;
 	
-	ObjectiveCriterion personalidade = new ObjectiveCriterion("Personalidade", "O qu�o legal o professor � como pessoa", 0, CriterionType.RATE);
-	ObjectiveCriterion provas = new ObjectiveCriterion("Provas", "O qu�o adequadas s�o as provas do professor em rela��o ao que ele ensina em sala", 0, CriterionType.RATE);
-	ObjectiveCriterion metodologia = new ObjectiveCriterion("Metodologia", "O qu�o boa � a metodologia do professor", 0, CriterionType.RATE);
-	SubjectiveCriterion comentario = new SubjectiveCriterion("Coment�rio geral", "O que voc� gostaria de dizer para as outras pessoas sobre este professor de maneira geral", null);
+	ObjectiveCriterion personalidade = new ObjectiveCriterion("Personalidade", "O quao legal o professor eh como pessoa", 0, CriterionType.RATE);
+	ObjectiveCriterion provas = new ObjectiveCriterion("Provas", "O quao adequadas sao as provas do professor em relacao ao que ele ensina em sala", 0, CriterionType.RATE);
+	ObjectiveCriterion metodologia = new ObjectiveCriterion("Metodologia", "O quao boa eh a metodologia do professor", 0, CriterionType.RATE);
+	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentario geral", "O que voce gostaria de dizer para as outras pessoas sobre este professor de maneira geral", null);
 	
 	ArrayList<ObjectiveCriterion> criteriosObjetivosDoProfessor = new ArrayList<ObjectiveCriterion>();
 	

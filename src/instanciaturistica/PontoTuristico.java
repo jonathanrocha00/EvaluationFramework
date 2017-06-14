@@ -11,11 +11,11 @@ public class PontoTuristico extends EvaluableItem {
 	
 	private String cidade;
 
-	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomenda��o", "Voc� recomendaria este lugar?", 0, CriterionType.BOOL);
-	ObjectiveCriterion periculosidade = new ObjectiveCriterion("Periculosidade", "Este lugar � perigoso?", 0, CriterionType.BOOL);
-	ObjectiveCriterion acessibilidade = new ObjectiveCriterion("Acessibilidade", "Este lugar � acess�vel?", 0, CriterionType.BOOL);
+	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendacao", "Voce recomendaria este lugar?", 0, CriterionType.BOOL);
+	ObjectiveCriterion periculosidade = new ObjectiveCriterion("Periculosidade", "Este lugar eh perigoso?", 0, CriterionType.BOOL);
+	ObjectiveCriterion acessibilidade = new ObjectiveCriterion("Acessibilidade", "Este lugar eh acessivel?", 0, CriterionType.BOOL);
 
-	SubjectiveCriterion comentario = new SubjectiveCriterion("Coment�rio geral", "O que voc� achou da experi�ncia nesse local?", null);
+	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentario geral", "O que voce achou da experiencia nesse local?", null);
 
 	ArrayList<ObjectiveCriterion> criteriosObjetivosDoPontoTuristico = new ArrayList<ObjectiveCriterion>();
 

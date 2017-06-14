@@ -13,19 +13,19 @@ public class Desenho extends EvaluableItem{
 	private String estudio;
 	private int classificacao;
 	
-	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendação", "Você gostou do desenho?", 0, CriterionType.BOOL);
-	ObjectiveCriterion qualidade = new ObjectiveCriterion("Qualidade", "Qual a nota para a qualidade desta animação?", 0, CriterionType.RATE);
+	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendacao", "Voce gostou do desenho?", 0, CriterionType.BOOL);
+	ObjectiveCriterion qualidade = new ObjectiveCriterion("Qualidade", "Qual a nota para a qualidade desta animacao?", 0, CriterionType.RATE);
 	ObjectiveCriterion personagens = new ObjectiveCriterion("Personagens", "O que achou dos personagens?", 0, CriterionType.RATE);
-	ObjectiveCriterion episodios = new ObjectiveCriterion("Episódios", "Que nota você daria para os episódios no geral?", 0, CriterionType.RATE);
+	ObjectiveCriterion episodios = new ObjectiveCriterion("Episodios", "Que nota voce daria para os episodios no geral?", 0, CriterionType.RATE);
 	
-	SubjectiveCriterion comentario = new SubjectiveCriterion("Coment�rio geral", "Sua hora de bancar o cr�tico", null);
+	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentario geral", "Sua hora de bancar o critico", null);
 	
 	ArrayList<ObjectiveCriterion> criteriosObjetivosDoDesenho = new ArrayList<ObjectiveCriterion>();
 
 	ArrayList<SubjectiveCriterion> criteriosSubjetivosDoDesenho = new ArrayList<SubjectiveCriterion>();
 
 	public Desenho(String name, int ano, String estudio, int classificacao) {
-		super(name, "Desenho do(a) " + estudio + ", criado em " + ano + " com classificação +" + classificacao + ".");
+		super(name, "Desenho do(a) " + estudio + ", criado em " + ano + " com classificacao +" + classificacao + ".");
 		
 		criteriosObjetivosDoDesenho.add(recomendacao);
 		criteriosObjetivosDoDesenho.add(qualidade);

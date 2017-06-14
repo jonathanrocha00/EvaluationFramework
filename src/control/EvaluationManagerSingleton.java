@@ -49,7 +49,7 @@ public class EvaluationManagerSingleton {
 	
 	public void printItemEvaluations(Class<?> C){
 		
-		System.out.println("=== Mostrando avalia��es feitas sobre " + C.getSimpleName() + "... ===");
+		System.out.println("=== Mostrando avaliacoes feitas sobre " + C.getSimpleName() + "... ===");
 		
 		ArrayList<ItemEvaluation> avaliacoes = new ArrayList<ItemEvaluation>();
 		
@@ -60,7 +60,7 @@ public class EvaluationManagerSingleton {
 		}
 		
 		for (ItemEvaluation avaliacao: avaliacoes) {
-			System.out.println("Avalia��o feita por " + avaliacao.getUser().getName() + " sobre " + avaliacao.getEvaluatedItem().getName());
+			System.out.println("Avaliacao feita por " + avaliacao.getUser().getName() + " sobre " + avaliacao.getEvaluatedItem().getName());
 		
 			for (ObjectiveCriterion criterio: avaliacao.getRates()) {
 				System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
@@ -74,7 +74,7 @@ public class EvaluationManagerSingleton {
 	
 	public void printUserEvaluations(Class<?> C){
 		
-		System.out.println("=== Mostrando avalia��es feitas sobre " + C.getSimpleName() + "... ===");
+		System.out.println("=== Mostrando avaliacoes feitas sobre " + C.getSimpleName() + "... ===");
 		
 		ArrayList<UserEvaluation> avaliacoes = new ArrayList<UserEvaluation>();
 		
@@ -85,7 +85,7 @@ public class EvaluationManagerSingleton {
 		}
 		
 		for (UserEvaluation avaliacao: avaliacoes) {
-			System.out.println("Avalia��o feita por " + avaliacao.getUser().getName() + " sobre " + avaliacao.getEvaluatedItem().getName());
+			System.out.println("Avaliacao feita por " + avaliacao.getUser().getName() + " sobre " + avaliacao.getEvaluatedItem().getName());
 		
 			for (ObjectiveCriterion criterio: avaliacao.getRates()) {
 				System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());

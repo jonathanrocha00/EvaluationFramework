@@ -60,11 +60,11 @@ public class Main {
 			// Pergunta ao espectador se ele deseja avalair desenhos, series ou filmes e recebe a resposta
 			System.out.println("=== O que deseja fazer? ===");
 			System.out.println("=== Insira [1] para avaliar desenhos ===");
-			System.out.println("=== Insira [2] para avaliar séries ===");
+			System.out.println("=== Insira [2] para avaliar series ===");
 			System.out.println("=== Insira [3] para avaliar filmes ===");
-			System.out.println("=== Insira [4] para ver avaliações sobre desenhos ===");
-			System.out.println("=== Insira [5] para ver avaliações sobre séries ===");
-			System.out.println("=== Insira [6] para ver avaliações sobre filmes ===");
+			System.out.println("=== Insira [4] para ver avaliacoes sobre desenhos ===");
+			System.out.println("=== Insira [5] para ver avaliacoes sobre series ===");
+			System.out.println("=== Insira [6] para ver avaliacoes sobre filmes ===");
 			System.out.println("=== Insira [7] para logar como outro usuario ===");
 			
 			inputText = scanner.nextLine();
@@ -79,7 +79,7 @@ public class Main {
 					}
 				}
 				
-				System.out.println("=== Insira o número do desenho que deseja avaliar ===");
+				System.out.println("=== Insira o numero do desenho que deseja avaliar ===");
 				
 				inputText = scanner.nextLine();
 				inputNum = parseInt(inputText);
@@ -89,18 +89,18 @@ public class Main {
 				// Desenho encontrado
 				if (desenhoSendoAvaliado != null) {
 					
-					// Clona o objeto a ser avaliado para não modificar o original
+					// Clona o objeto a ser avaliado para nao modificar o original
 					desenhoSendoAvaliado = Desenho.clone((Desenho) desenhoSendoAvaliado);
 					
 					if (regra.validateEvaluation(desenhoSendoAvaliado, usuarioAvaliando)){
 					
-						System.out.println("=== Você está avaliando o(a) " + desenhoSendoAvaliado.getName() + " ===");
+						System.out.println("=== Você esta avaliando o(a) " + desenhoSendoAvaliado.getName() + " ===");
 						
-						// Avaliando crit�rios objetivos
+						// Avaliando criterios objetivos
 						ArrayList<ObjectiveCriterion> criteriosObjetivos = desenhoSendoAvaliado.getObjectiveCriteriaToBeEvaluated();
 						for (ObjectiveCriterion criterio: criteriosObjetivos) {
 							
-							// Checa o tipo do crit�rio
+							// Checa o tipo do criterio
 							if (criterio.getCriterionType() == CriterionType.RATE) {
 								System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com uma nota de 0 a 10 ===");
 							}
@@ -118,12 +118,12 @@ public class Main {
 							criterio.setRate(inputNum);
 						}
 						
-						System.out.println("=== Voc� avaliou " + desenhoSendoAvaliado.getName() + " dessa maneira: ===");
+						System.out.println("=== Voce avaliou " + desenhoSendoAvaliado.getName() + " dessa maneira: ===");
 						for (ObjectiveCriterion criterio: criteriosObjetivos) {
 							System.out.println(">>> " + criterio.getName() + ": " + criterio.getRate());
 						}
 						
-						// Avaliando crit�rios subjetivos
+						// Avaliando criterios subjetivos
 						ArrayList<SubjectiveCriterion> criteriosSubjetivos = desenhoSendoAvaliado.getSubjectiveCriteriaToBeEvaluated();
 						for (SubjectiveCriterion criterio: criteriosSubjetivos) {
 							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com um texto ===");
@@ -131,20 +131,20 @@ public class Main {
 							inputText = scanner.nextLine();
 							criterio.setComment(inputText);
 						}
-						System.out.println("=== Voc� avaliou " + desenhoSendoAvaliado.getName() + " dessa maneira: ===");
+						System.out.println("=== Voce avaliou " + desenhoSendoAvaliado.getName() + " dessa maneira: ===");
 						for (SubjectiveCriterion criterio: criteriosSubjetivos) {
 							System.out.println(">>> " + criterio.getName() + ": ");
 							System.out.println(criterio.getComment());
 						}
 						
-						// Criando objeto da avalia��o
+						// Criando objeto da avaliacao
 						EvaluationManagerSingleton.getInstance().evaluateItem(desenhoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					}
 				}
 				
-				// Desenho n�o encontrado
+				// Desenho nao encontrado
 				else {
-					System.out.println("=== N�o existe nenhum desenho com esse n�mero. Voc� voltar� ao menu inicial. ===");
+					System.out.println("=== Nao existe nenhum desenho com esse numero. Voce voltara ao menu inicial. ===");
 				}
 			}
 			
@@ -157,7 +157,7 @@ public class Main {
 					}
 				}
 				
-				System.out.println("=== Insira o n�mero da série que deseja avaliar ===");
+				System.out.println("=== Insira o numero da serie que deseja avaliar ===");
 				
 				inputText = scanner.nextLine();
 				inputNum = parseInt(inputText);
@@ -167,18 +167,18 @@ public class Main {
 				// Serie encontrada
 				if (serieSendoAvaliada != null) {
 					
-					// Clona o objeto a ser avaliado para não modificar o original
+					// Clona o objeto a ser avaliado para nao modificar o original
 					serieSendoAvaliada = Serie.clone((Serie) serieSendoAvaliada);
 					
 					if (regra.validateEvaluation(serieSendoAvaliada, usuarioAvaliando)){
 					
-						System.out.println("=== Voc� est� avaliando a serie " + serieSendoAvaliada.getName() + " ===");
+						System.out.println("=== Voce esta avaliando a serie " + serieSendoAvaliada.getName() + " ===");
 						
-						// Avaliando crit�rios objetivos
+						// Avaliando criterios objetivos
 						ArrayList<ObjectiveCriterion> criteriosObjetivos = serieSendoAvaliada.getObjectiveCriteriaToBeEvaluated();
 						for (ObjectiveCriterion criterio: criteriosObjetivos) {
 							
-							// Checa o tipo do crit�rio
+							// Checa o tipo do criterio
 							if (criterio.getCriterionType() == CriterionType.RATE) {
 								System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com uma nota de 0 a 10 ===");
 							}
@@ -196,12 +196,12 @@ public class Main {
 							criterio.setRate(inputNum);
 						}
 						
-						System.out.println("=== Voc� avaliou " + serieSendoAvaliada.getName() + " dessa maneira: ===");
+						System.out.println("=== Voce avaliou " + serieSendoAvaliada.getName() + " dessa maneira: ===");
 						for (ObjectiveCriterion criterio: criteriosObjetivos) {
 							System.out.println(">>> " + criterio.getName() + ": " + criterio.getRate());
 						}
 						
-						// Avaliando crit�rios subjetivos
+						// Avaliando criterios subjetivos
 						ArrayList<SubjectiveCriterion> criteriosSubjetivos = serieSendoAvaliada.getSubjectiveCriteriaToBeEvaluated();
 						for (SubjectiveCriterion criterio: criteriosSubjetivos) {
 							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com um texto ===");
@@ -210,20 +210,20 @@ public class Main {
 							
 							criterio.setComment(inputText);
 						}
-						System.out.println("=== Voc� avaliou " + serieSendoAvaliada.getName() + " dessa maneira: ===");
+						System.out.println("=== Voce avaliou " + serieSendoAvaliada.getName() + " dessa maneira: ===");
 						for (SubjectiveCriterion criterio: criteriosSubjetivos) {
 							System.out.println(">>> " + criterio.getName() + ": ");
 							System.out.println(criterio.getComment());
 						}
 						
-						// Criando objeto da avalia��o
+						// Criando objeto da avaliacao
 						EvaluationManagerSingleton.getInstance().evaluateItem(serieSendoAvaliada, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					}
 				}
 				
 				// Serie n�o encontrada
 				else {
-					System.out.println("=== N�o existe nenhuma serie com esse n�mero. Voc� voltar� ao menu inicial. ===");
+					System.out.println("=== Nao existe nenhuma serie com esse numero. Voce voltara ao menu inicial. ===");
 				}			
 			}
 			
@@ -236,7 +236,7 @@ public class Main {
 					}
 				}
 				
-			System.out.println("=== Insira o n�mero da filme que deseja avaliar ===");
+			System.out.println("=== Insira o numero da filme que deseja avaliar ===");
 				
 			inputText = scanner.nextLine();
 			inputNum = parseInt(inputText);
@@ -246,18 +246,18 @@ public class Main {
 			// Filme encontrado
 			if (filmeSendoAvaliado != null) {
 				
-				// Clona o objeto a ser avaliado para não modificar o original
+				// Clona o objeto a ser avaliado para nao modificar o original
 				filmeSendoAvaliado = Filme.clone((Filme)filmeSendoAvaliado);
 				
 				if (regra.validateEvaluation(filmeSendoAvaliado, usuarioAvaliando)){
 					
-					System.out.println("=== Voc� est� avaliando a filme " + filmeSendoAvaliado.getName() + " ===");
+					System.out.println("=== Voce esta avaliando a filme " + filmeSendoAvaliado.getName() + " ===");
 					
-					// Avaliando crit�rios objetivos
+					// Avaliando criterios objetivos
 					ArrayList<ObjectiveCriterion> criteriosObjetivos = filmeSendoAvaliado.getObjectiveCriteriaToBeEvaluated();
 					for (ObjectiveCriterion criterio: criteriosObjetivos) {
 						
-						// Checa o tipo do crit�rio
+						// Checa o tipo do criterio
 						if (criterio.getCriterionType() == CriterionType.RATE) {
 							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com uma nota de 0 a 10 ===");
 						}
@@ -275,12 +275,12 @@ public class Main {
 						criterio.setRate(inputNum);
 					}
 					
-					System.out.println("=== Voc� avaliou " + filmeSendoAvaliado.getName() + " dessa maneira: ===");
+					System.out.println("=== Voce avaliou " + filmeSendoAvaliado.getName() + " dessa maneira: ===");
 					for (ObjectiveCriterion criterio: criteriosObjetivos) {
 						System.out.println(">>> " + criterio.getName() + ": " + criterio.getRate());
 					}
 					
-					// Avaliando crit�rios subjetivos
+					// Avaliando criterios subjetivos
 					ArrayList<SubjectiveCriterion> criteriosSubjetivos = filmeSendoAvaliado.getSubjectiveCriteriaToBeEvaluated();
 					for (SubjectiveCriterion criterio: criteriosSubjetivos) {
 						System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com um texto ===");
@@ -289,39 +289,39 @@ public class Main {
 						
 						criterio.setComment(inputText);
 					}
-					System.out.println("=== Voc� avaliou " + filmeSendoAvaliado.getName() + " dessa maneira: ===");
+					System.out.println("=== Voce avaliou " + filmeSendoAvaliado.getName() + " dessa maneira: ===");
 					for (SubjectiveCriterion criterio: criteriosSubjetivos) {
 						System.out.println(">>> " + criterio.getName() + ": ");
 						System.out.println(criterio.getComment());
 					}
 					
-					// Criando objeto da avalia��o
+					// Criando objeto da avaliacao
 					EvaluationManagerSingleton.getInstance().evaluateItem(filmeSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 				}
 			}
 			
-			// Filme n�o encontrado
+			// Filme nao encontrado
 			else {
-				System.out.println("=== N�o existe nenhuma filme com esse n�mero. Voc� voltar� ao menu inicial. ===");
+				System.out.println("=== Nao existe nenhuma filme com esse numero. Voce voltara ao menu inicial. ===");
 			}			
 		}			
 			
-			// Caso tenha escolhido [4] - ver avalia��es de desenhos
+			// Caso tenha escolhido [4] - ver avaliacoes de desenhos
 			else if (inputNum == 4){
 				EvaluationManagerSingleton.getInstance().printItemEvaluations(Desenho.class);
 			}
 			
-			// Caso tenha escolhido [5] - ver avalia��es de series
+			// Caso tenha escolhido [5] - ver avaliacoes de series
 			else if (inputNum == 5){
 				EvaluationManagerSingleton.getInstance().printItemEvaluations(Serie.class);
 			}
 			
-			// Caso tenha escolhido [6] - ver avalia��es de filmes
+			// Caso tenha escolhido [6] - ver avaliacoes de filmes
 			else if (inputNum == 6){
 				EvaluationManagerSingleton.getInstance().printItemEvaluations(Filme.class);
 			}
 			
-			// Caso tenha escolhido [7] - trocar de usu�rio
+			// Caso tenha escolhido [7] - trocar de usuario
 			else if (inputNum == 7) {
 				usuarioAvaliando = new Espectador(null, 0);
 				usuarioAvaliando = logarComNovoUsuario(userService, scanner);
@@ -329,7 +329,7 @@ public class Main {
 			
 			// Caso tenha sido escolhido numero inexistente
 			else{
-				System.out.println("=== N�o existe essa op��o no menu. ===");
+				System.out.println("=== Nao existe essa opcao no menu. ===");
 			}
 		}
 	}
@@ -351,7 +351,7 @@ public class Main {
 		Scanner scn = new Scanner(System.in);
 		
 		while(!opcao.matches("^\\d+(\\.\\d+)?")){
-			System.out.println("=== N�o existe essa op��o no menu. ===");
+			System.out.println("=== Nao existe essa opcao no menu. ===");
 			opcao = scn.nextLine();
 		}
 		

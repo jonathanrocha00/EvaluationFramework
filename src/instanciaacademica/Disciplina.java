@@ -11,10 +11,10 @@ public class Disciplina extends EvaluableItem {
 	
 	private String departamento;
 	
-	ObjectiveCriterion dificuldade = new ObjectiveCriterion("Dificuldade", "O qu�o dif�cil � essa disciplina", 0, CriterionType.RATE);
-	ObjectiveCriterion relevancia = new ObjectiveCriterion("Relevancia", "O qu�o relevante � essa disciplina para o curr�culo", 0, CriterionType.RATE);
-	ObjectiveCriterion dedicacao = new ObjectiveCriterion("Dedicacao", "O quanto voc� precisa se dedicar nessa disciplina", 0, CriterionType.RATE);
-	SubjectiveCriterion comentario = new SubjectiveCriterion("Coment�rio geral", "O que voc� gostaria de dizer para as outras pessoas sobre esta disciplina de maneira geral", null);
+	ObjectiveCriterion dificuldade = new ObjectiveCriterion("Dificuldade", "O quao dificil eh essa disciplina", 0, CriterionType.RATE);
+	ObjectiveCriterion relevancia = new ObjectiveCriterion("Relevancia", "O quao relevante eh essa disciplina para o curriculo", 0, CriterionType.RATE);
+	ObjectiveCriterion dedicacao = new ObjectiveCriterion("Dedicacao", "O quanto voce precisa se dedicar nessa disciplina", 0, CriterionType.RATE);
+	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentario geral", "O que voce gostaria de dizer para as outras pessoas sobre esta disciplina de maneira geral", null);
 	
 	ArrayList<ObjectiveCriterion> criteriosObjetivosDaDisciplina = new ArrayList<ObjectiveCriterion>();
 	

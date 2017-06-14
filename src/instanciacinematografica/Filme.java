@@ -13,19 +13,19 @@ public class Filme extends EvaluableItem {
 	private String diretor;
 	private int classificacao;
 
-	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomenda��o", "Voc� gostou do filme?", 0, CriterionType.BOOL);
-	ObjectiveCriterion atuacao = new ObjectiveCriterion("Atua��o", "Os atores te convenceram?", 0, CriterionType.BOOL);
+	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendacao", "Voce gostou do filme?", 0, CriterionType.BOOL);
+	ObjectiveCriterion atuacao = new ObjectiveCriterion("Atuacao", "Os atores te convenceram?", 0, CriterionType.BOOL);
 	ObjectiveCriterion trilhaSonora = new ObjectiveCriterion("Trilha Sonora", "Os sons se encaixavam nas cenas?", 0, CriterionType.BOOL);
-	ObjectiveCriterion direcao = new ObjectiveCriterion("Dire��o", "E o diretor? Soube fazer seu papel?", 0, CriterionType.BOOL);
+	ObjectiveCriterion direcao = new ObjectiveCriterion("Direcao", "E o diretor? Soube fazer seu papel?", 0, CriterionType.BOOL);
 
-	SubjectiveCriterion comentario = new SubjectiveCriterion("Coment�rio geral", "Sua hora de bancar o cr�tico", null);
+	SubjectiveCriterion comentario = new SubjectiveCriterion("Comenterio geral", "Sua hora de bancar o critico", null);
 
 	ArrayList<ObjectiveCriterion> criteriosObjetivosDoFilme = new ArrayList<ObjectiveCriterion>();
 
 	ArrayList<SubjectiveCriterion> criteriosSubjetivosDoFilme = new ArrayList<SubjectiveCriterion>();
 
 	public Filme(String name, int ano, String diretor, int classificacao) {
-		super(name, "Filme de " + ano + " dirigindo por " + diretor + "com classificação +" + classificacao + ".");
+		super(name, "Filme de " + ano + " dirigindo por " + diretor + "com classificacao +" + classificacao + ".");
 		
 		criteriosObjetivosDoFilme.add(recomendacao);
 		criteriosObjetivosDoFilme.add(atuacao);

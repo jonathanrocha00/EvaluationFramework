@@ -12,11 +12,11 @@ public class Estabelecimento extends EvaluableItem {
 	private String tipo;
 	private String cidade;
 	
-	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomenda��o", "Voc� recomendaria este estabelecimento?", 0, CriterionType.BOOL);
-	ObjectiveCriterion preco = new ObjectiveCriterion("Pre�o", "O qu�o caro � esse lugar?", 0, CriterionType.RATE);
-	ObjectiveCriterion acessibilidade = new ObjectiveCriterion("Acessibilidade", "Este estabelecimento � acess�vel?", 0, CriterionType.BOOL);
+	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendacao", "Voce recomendaria este estabelecimento?", 0, CriterionType.BOOL);
+	ObjectiveCriterion preco = new ObjectiveCriterion("Preco", "O quao caro eh esse lugar?", 0, CriterionType.RATE);
+	ObjectiveCriterion acessibilidade = new ObjectiveCriterion("Acessibilidade", "Este estabelecimento eh acessivel?", 0, CriterionType.BOOL);
 
-	SubjectiveCriterion comentario = new SubjectiveCriterion("Coment�rio geral", "O que voc� achou da experi�ncia nesse estabelecimento?", null);
+	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentario geral", "O que voce achou da experiencia nesse estabelecimento?", null);
 
 	ArrayList<ObjectiveCriterion> criteriosObjetivosDoEstabalecimento = new ArrayList<ObjectiveCriterion>();
 

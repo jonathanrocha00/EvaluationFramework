@@ -13,19 +13,19 @@ public class Serie extends EvaluableItem {
 	private String genero;
 	private int classificacao;
 	
-	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomenda��o", "Voc� gostou da serie?", 0, CriterionType.BOOL);
+	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendacao", "Voce gostou da serie?", 0, CriterionType.BOOL);
 	ObjectiveCriterion personagens = new ObjectiveCriterion("Personagens", "O que achou dos personagens?", 0, CriterionType.RATE);
-	ObjectiveCriterion musicas = new ObjectiveCriterion("M�sicas", "As m�sicas merecem ser baixadas?", 0, CriterionType.BOOL);
-	ObjectiveCriterion duracao = new ObjectiveCriterion("Dura��o", "A s�rie dura o quanto tem que durar?", 0, CriterionType.BOOL);
+	ObjectiveCriterion musicas = new ObjectiveCriterion("Musicas", "As musicas merecem ser baixadas?", 0, CriterionType.BOOL);
+	ObjectiveCriterion duracao = new ObjectiveCriterion("Duracao", "A serie dura o quanto tem que durar?", 0, CriterionType.BOOL);
 
-	SubjectiveCriterion comentario = new SubjectiveCriterion("Coment�rio geral", "Sua hora de bancar o cr�tico", null);
+	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentario geral", "Sua hora de bancar o critico", null);
 	
 	ArrayList<ObjectiveCriterion> criteriosObjetivosDaSerie = new ArrayList<ObjectiveCriterion>();
 
 	ArrayList<SubjectiveCriterion> criteriosSubjetivosDaSerie = new ArrayList<SubjectiveCriterion>();
 	
 	public Serie(String name, int numeroDeEpisodios, String genero, int classificacao) {
-		super(name, "S�rie com " + numeroDeEpisodios + " de " + genero + " e classificação +" + classificacao + ".");
+		super(name, "Serie com " + numeroDeEpisodios + " de " + genero + " e classificacao +" + classificacao + ".");
 
 		criteriosObjetivosDaSerie.add(recomendacao);
 		criteriosObjetivosDaSerie.add(personagens);
