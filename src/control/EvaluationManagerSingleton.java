@@ -72,7 +72,7 @@ public class EvaluationManagerSingleton {
 		}
 	}
 	
-public void printUserEvaluations(Class<?> C){
+	public void printUserEvaluations(Class<?> C){
 		
 		System.out.println("=== Mostrando avalia��es feitas sobre " + C.getSimpleName() + "... ===");
 		
