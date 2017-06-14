@@ -106,7 +106,11 @@ public class Main {
 	
 							inputText = scanner.nextLine();
 							inputNum = parseInt(inputText);
-							
+							while (!EvaluationManagerSingleton.getInstance().validateRate(inputNum, criterio.getCriterionType())){
+								System.out.println("=== Valor invalido para este tipo de avaliacao. ===");
+								inputText = scanner.nextLine();
+								inputNum = parseInt(inputText);
+							}
 							criterio.setRate(inputNum);
 						}
 						
@@ -177,7 +181,11 @@ public class Main {
 							
 							inputText = scanner.nextLine();
 							inputNum = parseInt(inputText);
-							
+							while (!EvaluationManagerSingleton.getInstance().validateRate(inputNum, criterio.getCriterionType())){
+								System.out.println("=== Valor invalido para este tipo de avaliacao. ===");
+								inputText = scanner.nextLine();
+								inputNum = parseInt(inputText);
+							}
 							criterio.setRate(inputNum);
 						}
 						
@@ -249,7 +257,11 @@ public class Main {
 						
 						inputText = scanner.nextLine();
 						inputNum = parseInt(inputText);
-						
+						while (!EvaluationManagerSingleton.getInstance().validateRate(inputNum, criterio.getCriterionType())){
+							System.out.println("=== Valor invalido para este tipo de avaliacao. ===");
+							inputText = scanner.nextLine();
+							inputNum = parseInt(inputText);
+						}
 						criterio.setRate(inputNum);
 					}
 					
@@ -301,6 +313,7 @@ public class Main {
 			
 			// Caso tenha escolhido [7] - trocar de usu�rio
 			else if (inputNum == 7) {
+				usuarioAvaliando = new Espectador(null, 0);
 				usuarioAvaliando = logarComNovoUsuario(userService, scanner);
 			}
 			

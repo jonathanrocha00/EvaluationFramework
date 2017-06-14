@@ -41,7 +41,6 @@ public class ItemEvaluationDao implements DaoInterface<ItemEvaluation>{
 		if (doesExist(newElement)){
 			update(newElement);
 		}else{
-			System.out.println("Devo entrar aqui...");
 			itemEvaluationList.add(newElement);
 		}
 	}

@@ -94,9 +94,12 @@ public class Main {
 	
 							
 							inputText = scanner.nextLine();
-							
 							inputNum = parseInt(inputText);
-							
+							while (!EvaluationManagerSingleton.getInstance().validateRate(inputNum, criterio.getCriterionType())){
+								System.out.println("=== Valor invalido para este tipo de avaliacao. ===");
+								inputText = scanner.nextLine();
+								inputNum = parseInt(inputText);
+							}
 							criterio.setRate(inputNum);
 						}
 						
@@ -164,9 +167,12 @@ public class Main {
 							}
 							
 							inputText = scanner.nextLine();
-							
 							inputNum = parseInt(inputText);
-							
+							while (!EvaluationManagerSingleton.getInstance().validateRate(inputNum, criterio.getCriterionType())){
+								System.out.println("=== Valor invalido para este tipo de avaliacao. ===");
+								inputText = scanner.nextLine();
+								inputNum = parseInt(inputText);
+							}
 							criterio.setRate(inputNum);
 						}
 						

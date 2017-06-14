@@ -97,4 +97,19 @@ public class EvaluationManagerSingleton {
 		}
 	}
 	
+	public boolean validateRate(int rate, CriterionType criterio){
+		
+		if (criterio == CriterionType.BOOL){
+			if (rate > 1 || rate < 0){
+				return false;
+			}
+		}else if (criterio == CriterionType.RATE){
+			if (rate > 10 || rate < 0){
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
 }
