@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
+import control.EvaluationManagerSingleton;
 import model.CriterionType;
 import model.EvaluableItem;
 import model.ItemEvaluation;
@@ -22,15 +23,16 @@ public class Main {
 	public static void main(String[] args) {
 		UserService userService = new UserService();
 		EvaluableItemService evaluableItemService = new EvaluableItemService();
-		ItemEvaluationService itemEvaluationService = new ItemEvaluationService();
 		
 		evaluableItemService.insert(new PontoTuristico("Morro do Careca", "Natal"));
 		evaluableItemService.insert(new PontoTuristico("Museu do Louvre", "Paris"));
 		evaluableItemService.insert(new PontoTuristico("Central Park", "Nova York"));
 		
 		evaluableItemService.insert(new Estabelecimento("Midway Mall", "Natal", "Shopping"));
-		evaluableItemService.insert(new Estabelecimento("Starbucks", "Recife", "Café"));
+		evaluableItemService.insert(new Estabelecimento("Starbucks", "Recife", "Cafï¿½"));
 		evaluableItemService.insert(new Estabelecimento("Riachuelo", "Fortaleza", "Loja"));
+		
+		RegraTuristica regra = new RegraTuristica();
 		
 		Scanner scanner = new Scanner(System.in);
 		int inputNum = 0;
@@ -39,10 +41,10 @@ public class Main {
 		System.out.println("=== Bem vindo ao FiveSquare ===");
 		System.out.println("");
 		
-		// Criando um usuário para a pessoa que iniciou o sistema
+		// Criando um usuï¿½rio para a pessoa que iniciou o sistema
 		System.out.println("=== Qual seu nome? ===");
 		String nome = scanner.nextLine();
-		System.out.println("=== Onde você mora? ===");
+		System.out.println("=== Onde vocï¿½ mora? ===");
 		String cidade = scanner.nextLine();
 		Usuario usuarioAvaliando = new Usuario(nome, cidade);
 		userService.insert(usuarioAvaliando);
@@ -51,18 +53,18 @@ public class Main {
 			System.out.println("");
 			System.out.println("");
 			
-			// Pergunta ao usuário se ele deseja avalair professores ou disciplinas e recebe a resposta
+			// Pergunta ao usuï¿½rio se ele deseja avalair professores ou disciplinas e recebe a resposta
 			System.out.println("=== O que deseja fazer? ===");
 			System.out.println("=== Insira [1] para avaliar pontos turisticos ===");
 			System.out.println("=== Insira [2] para avaliar estabelecimentos ===");
-			System.out.println("=== Insira [3] para ver avaliações sobre pontos turisticos ===");
-			System.out.println("=== Insira [4] para ver avaliações sobre estabelecimentos ===");
+			System.out.println("=== Insira [3] para ver avaliaï¿½ï¿½es sobre pontos turisticos ===");
+			System.out.println("=== Insira [4] para ver avaliaï¿½ï¿½es sobre estabelecimentos ===");
 			System.out.println("=== Insira [5] para logar como outro usuario ===");
 			
 			inputText = scanner.nextLine();
 			inputNum = parseInt(inputText);
 
-			// Caso tenha escolhido [1] - avaliando pontos turísticos
+			// Caso tenha escolhido [1] - avaliando pontos turï¿½sticos
 			if (inputNum == 1) {
 				for (int i = 0; i < evaluableItemService.searchAll().size(); i++) {
 					
@@ -71,23 +73,23 @@ public class Main {
 					}
 				}
 				
-				System.out.println("=== Insira o número do ponto turístico que deseja avaliar ===");
+				System.out.println("=== Insira o nï¿½mero do ponto turï¿½stico que deseja avaliar ===");
 				
 				inputText = scanner.nextLine();
 				inputNum = parseInt(inputText);
 				
 				EvaluableItem pontoTuristicoSendoAvaliado = evaluableItemService.search(inputNum);
 				
-				// Ponto turístico encontrado
+				// Ponto turï¿½stico encontrado
 				if (pontoTuristicoSendoAvaliado != null) {
 					
-					System.out.println("=== Você está avaliando o(a) " + pontoTuristicoSendoAvaliado.getName() + " ===");
+					System.out.println("=== Vocï¿½ estï¿½ avaliando o(a) " + pontoTuristicoSendoAvaliado.getName() + " ===");
 					
-					// Avaliando critérios objetivos
+					// Avaliando critï¿½rios objetivos
 					ArrayList<ObjectiveCriterion> criteriosObjetivos = pontoTuristicoSendoAvaliado.getObjectiveCriteriaToBeEvaluated();
 					for (ObjectiveCriterion criterio: criteriosObjetivos) {
 						
-						// Checa o tipo do critério
+						// Checa o tipo do critï¿½rio
 						if (criterio.getCriterionType() == CriterionType.RATE) {
 							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com uma nota de 0 a 10 ===");
 						}
@@ -101,12 +103,12 @@ public class Main {
 						criterio.setRate(inputNum);
 					}
 					
-					System.out.println("=== Você avaliou " + pontoTuristicoSendoAvaliado.getName() + " dessa maneira: ===");
+					System.out.println("=== Vocï¿½ avaliou " + pontoTuristicoSendoAvaliado.getName() + " dessa maneira: ===");
 					for (ObjectiveCriterion criterio: criteriosObjetivos) {
 						System.out.println(">>> " + criterio.getName() + ": " + criterio.getRate());
 					}
 					
-					// Avaliando critérios subjetivos
+					// Avaliando critï¿½rios subjetivos
 					ArrayList<SubjectiveCriterion> criteriosSubjetivos = pontoTuristicoSendoAvaliado.getSubjectiveCriteriaToBeEvaluated();
 					for (SubjectiveCriterion criterio: criteriosSubjetivos) {
 						System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com um texto ===");
@@ -114,26 +116,20 @@ public class Main {
 						inputText = scanner.nextLine();
 						criterio.setComment(inputText);
 					}
-					System.out.println("=== Você avaliou " + pontoTuristicoSendoAvaliado.getName() + " dessa maneira: ===");
+					System.out.println("=== Vocï¿½ avaliou " + pontoTuristicoSendoAvaliado.getName() + " dessa maneira: ===");
 					for (SubjectiveCriterion criterio: criteriosSubjetivos) {
 						System.out.println(">>> " + criterio.getName() + ": ");
 						System.out.println(criterio.getComment());
 					}
 					
-					// Criando objeto da avaliação
-					ItemEvaluation avaliacao = new ItemEvaluation(pontoTuristicoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
-					
-					
-					// TODO: Lógica de validação da avaliação
-					
-					
-					itemEvaluationService.insert(avaliacao);
+					// Criando objeto da avaliaï¿½ï¿½o
+					EvaluationManagerSingleton.getInstance().evaluateItem(regra, pontoTuristicoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					
 				}
 				
-				// Ponto turístico não encontrado
+				// Ponto turï¿½stico nï¿½o encontrado
 				else {
-					System.out.println("=== Não existe nenhum ponto turístico com esse número. Você voltará ao menu inicial. ===");
+					System.out.println("=== Nï¿½o existe nenhum ponto turï¿½stico com esse nï¿½mero. Vocï¿½ voltarï¿½ ao menu inicial. ===");
 				}
 			}
 			
@@ -146,7 +142,7 @@ public class Main {
 					}
 				}
 				
-				System.out.println("=== Insira o número do estabelecimento que deseja avaliar ===");
+				System.out.println("=== Insira o nï¿½mero do estabelecimento que deseja avaliar ===");
 				
 				inputText = scanner.nextLine();
 				inputNum = parseInt(inputText);
@@ -156,13 +152,13 @@ public class Main {
 				// Estabelecimento encontrado
 				if (estabelecimentoSendoAvaliado != null) {
 					
-					System.out.println("=== Você está avaliando o estabelecimento " + estabelecimentoSendoAvaliado.getName() + " ===");
+					System.out.println("=== Vocï¿½ estï¿½ avaliando o estabelecimento " + estabelecimentoSendoAvaliado.getName() + " ===");
 					
-					// Avaliando critérios objetivos
+					// Avaliando critï¿½rios objetivos
 					ArrayList<ObjectiveCriterion> criteriosObjetivos = estabelecimentoSendoAvaliado.getObjectiveCriteriaToBeEvaluated();
 					for (ObjectiveCriterion criterio: criteriosObjetivos) {
 						
-						// Checa o tipo do critério
+						// Checa o tipo do critï¿½rio
 						if (criterio.getCriterionType() == CriterionType.RATE) {
 							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com uma nota de 0 a 10 ===");
 						}
@@ -176,12 +172,12 @@ public class Main {
 						criterio.setRate(inputNum);
 					}
 					
-					System.out.println("=== Você avaliou " + estabelecimentoSendoAvaliado.getName() + " dessa maneira: ===");
+					System.out.println("=== Vocï¿½ avaliou " + estabelecimentoSendoAvaliado.getName() + " dessa maneira: ===");
 					for (ObjectiveCriterion criterio: criteriosObjetivos) {
 						System.out.println(">>> " + criterio.getName() + ": " + criterio.getRate());
 					}
 					
-					// Avaliando critérios subjetivos
+					// Avaliando critï¿½rios subjetivos
 					ArrayList<SubjectiveCriterion> criteriosSubjetivos = estabelecimentoSendoAvaliado.getSubjectiveCriteriaToBeEvaluated();
 					for (SubjectiveCriterion criterio: criteriosSubjetivos) {
 						System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com um texto ===");
@@ -190,97 +186,41 @@ public class Main {
 						
 						criterio.setComment(inputText);
 					}
-					System.out.println("=== Você avaliou " + estabelecimentoSendoAvaliado.getName() + " dessa maneira: ===");
+					System.out.println("=== Vocï¿½ avaliou " + estabelecimentoSendoAvaliado.getName() + " dessa maneira: ===");
 					for (SubjectiveCriterion criterio: criteriosSubjetivos) {
 						System.out.println(">>> " + criterio.getName() + ": ");
 						System.out.println(criterio.getComment());
 					}
 					
-					// Criando objeto da avaliação
-					ItemEvaluation avaliacao = new ItemEvaluation(estabelecimentoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
-					
-					
-					// TODO: Lógica de validação da avaliação
-					
-					
-					itemEvaluationService.insert(avaliacao);
+					// Criando objeto da avaliaï¿½ï¿½o
+					EvaluationManagerSingleton.getInstance().evaluateItem(regra, estabelecimentoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 				}
 				
-				// Disciplina não encontrada
+				// Disciplina nï¿½o encontrada
 				else {
-					System.out.println("=== Não existe nenhum estabelecimento com esse número. Você voltará ao menu inicial. ===");
+					System.out.println("=== Nï¿½o existe nenhum estabelecimento com esse nï¿½mero. Vocï¿½ voltarï¿½ ao menu inicial. ===");
 				}			
 			}
 			
-			// Caso tenha escolhido [3] - ver avaliações de pontos turísticos
+			// Caso tenha escolhido [3] - ver avaliaï¿½ï¿½es de pontos turï¿½sticos
 			else if (inputNum == 3){
-				verAvaliacoesDePontosTuristicos(itemEvaluationService);
+				EvaluationManagerSingleton.getInstance().printItemEvaluations(PontoTuristico.class);
 			}
 			
-			// Caso tenha escolhido [4] - ver avaliações de disciplinas
+			// Caso tenha escolhido [4] - ver avaliaï¿½ï¿½es de disciplinas
 			else if (inputNum == 4){
-				verAvaliacoesDeEstabelecimentos(itemEvaluationService);
+				EvaluationManagerSingleton.getInstance().printItemEvaluations(Estabelecimento.class);
 			}
 			
-			// Caso tenha escolhido [5] - trocar de usuário
+			// Caso tenha escolhido [5] - trocar de usuï¿½rio
 			else if (inputNum == 5) {
 				usuarioAvaliando = logarComNovoUsuario(userService, scanner);
 			}
 			
 			// Caso tenha sido escolhido numero inexistente
 			else{
-				System.out.println("=== Não existe essa opção no menu. ===");
+				System.out.println("=== Nï¿½o existe essa opï¿½ï¿½o no menu. ===");
 			}
-		}
-	}
-	
-	private static void verAvaliacoesDePontosTuristicos(ItemEvaluationService itemEvaluationService) {
-		System.out.println("=== Mostrando avaliações feitas sobre pontos turísticos... ===");
-		
-		ArrayList<ItemEvaluation> avaliacoesDePontosTuristicos = new ArrayList<ItemEvaluation>();
-		ArrayList<ItemEvaluation> listaAuxiliar = (ArrayList<ItemEvaluation>) itemEvaluationService.searchAll();
-		
-		for (ItemEvaluation item: listaAuxiliar) {
-			if (item.getEvaluatedItem().getClass() == PontoTuristico.class) {
-				avaliacoesDePontosTuristicos.add(item);
-			}
-		}
-		
-		for (ItemEvaluation avaliacao: avaliacoesDePontosTuristicos) {
-			System.out.println("Avaliação feita por " + avaliacao.getUser().getName() + " sobre " + avaliacao.getEvaluatedItem().getName());
-		
-			for (ObjectiveCriterion criterio: avaliacao.getRates()) {
-				System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
-			}
-			for (SubjectiveCriterion criterio: avaliacao.getComments()) {
-				System.out.println("\t> " + criterio.getName() + ": ");
-				System.out.println("\t\t" + criterio.getComment());
-			}				
-		}
-	}
-	
-	private static void verAvaliacoesDeEstabelecimentos(ItemEvaluationService itemEvaluationService) {
-		System.out.println("=== Mostrando avaliações feitas sobre pontos turísticos... ===");
-		
-		ArrayList<ItemEvaluation> avaliacoesDeEstabelecimentos = new ArrayList<ItemEvaluation>();
-		ArrayList<ItemEvaluation> listaAuxiliar = (ArrayList<ItemEvaluation>) itemEvaluationService.searchAll();
-		
-		for (ItemEvaluation item: listaAuxiliar) {
-			if (item.getEvaluatedItem().getClass() == Estabelecimento.class) {
-				avaliacoesDeEstabelecimentos.add(item);
-			}
-		}
-		
-		for (ItemEvaluation avaliacao: avaliacoesDeEstabelecimentos) {
-			System.out.println("Avaliação feita por " + avaliacao.getUser().getName() + " sobre " + avaliacao.getEvaluatedItem().getName());
-		
-			for (ObjectiveCriterion criterio: avaliacao.getRates()) {
-				System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
-			}
-			for (SubjectiveCriterion criterio: avaliacao.getComments()) {
-				System.out.println("\t> " + criterio.getName() + ": ");
-				System.out.println("\t\t" + criterio.getComment());
-			}				
 		}
 	}
 
@@ -289,7 +229,7 @@ public class Main {
 		Usuario usuarioAvaliando;
 		System.out.println("=== Qual seu nome? ===");
 		String nome = scanner.nextLine();
-		System.out.println("=== Onde você mora? ===");
+		System.out.println("=== Onde vocï¿½ mora? ===");
 		String cidade = scanner.nextLine();
 		
 		usuarioAvaliando = new Usuario(nome, cidade);
@@ -301,7 +241,7 @@ public class Main {
 		Scanner scn = new Scanner(System.in);
 		
 		while(!opcao.matches("^\\d+(\\.\\d+)?")){
-			System.out.println("=== Não existe essa opção no menu. ===");
+			System.out.println("=== Nï¿½o existe essa opï¿½ï¿½o no menu. ===");
 			opcao = scn.nextLine();
 		}
 		return Integer.parseInt(opcao);
