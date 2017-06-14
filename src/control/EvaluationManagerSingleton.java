@@ -80,4 +80,29 @@ public class EvaluationManagerSingleton {
 		}
 	}
 	
+public void printUserEvaluations(Class<?> C){
+		
+		System.out.println("=== Mostrando avalia��es feitas sobre " + C.getSimpleName() + "... ===");
+		
+		ArrayList<UserEvaluation> avaliacoes = new ArrayList<UserEvaluation>();
+		
+		for (UserEvaluation item: getAllUserEvaluations()) {
+			if (item.getEvaluatedItem().getClass() == C) {
+				avaliacoes.add(item);
+			}
+		}
+		
+		for (UserEvaluation avaliacao: avaliacoes) {
+			System.out.println("Avalia��o feita por " + avaliacao.getUser().getName() + " sobre " + avaliacao.getEvaluatedItem().getName());
+		
+			for (ObjectiveCriterion criterio: avaliacao.getRates()) {
+				System.out.println("\t> " + criterio.getName() + ": " + criterio.getRate());
+			}
+			for (SubjectiveCriterion criterio: avaliacao.getComments()) {
+				System.out.println("\t> " + criterio.getName() + ": ");
+				System.out.println("\t\t" + criterio.getComment());
+			}				
+		}
+	}
+	
 }
