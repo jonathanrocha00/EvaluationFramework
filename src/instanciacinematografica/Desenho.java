@@ -66,6 +66,9 @@ public class Desenho extends EvaluableItem{
 		this.classificacao = classificacao;
 	}
 	
-	
+	static public Desenho clone(Desenho desenho) {
+		Desenho retorno = new Desenho(desenho.name, desenho.ano, desenho.estudio, desenho.classificacao);
+		return retorno;
+	}
 
 }

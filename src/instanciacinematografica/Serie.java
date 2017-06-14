@@ -66,6 +66,9 @@ public class Serie extends EvaluableItem {
 		this.classificacao = classificacao;
 	}
 	
-	
+	static public Serie clone(Serie serie) {
+		Serie retorno = new Serie(serie.name, serie.numeroDeEpisodios, serie.genero, serie.classificacao);
+		return retorno;
+	}
 	
 }

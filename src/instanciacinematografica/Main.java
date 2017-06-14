@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import control.EvaluationManagerSingleton;
+import instanciaacademica.Professor;
 import model.CriterionType;
 import model.EvaluableItem;
 import model.ObjectiveCriterion;
@@ -88,6 +89,9 @@ public class Main {
 				// Desenho encontrado
 				if (desenhoSendoAvaliado != null) {
 					
+					// Clona o objeto a ser avaliado para não modificar o original
+					desenhoSendoAvaliado = Desenho.clone((Desenho) desenhoSendoAvaliado);
+					
 					if (regra.validateEvaluation(desenhoSendoAvaliado, usuarioAvaliando)){
 					
 						System.out.println("=== Você está avaliando o(a) " + desenhoSendoAvaliado.getName() + " ===");
@@ -162,6 +166,9 @@ public class Main {
 				
 				// Serie encontrada
 				if (serieSendoAvaliada != null) {
+					
+					// Clona o objeto a ser avaliado para não modificar o original
+					serieSendoAvaliada = Serie.clone((Serie) serieSendoAvaliada);
 					
 					if (regra.validateEvaluation(serieSendoAvaliada, usuarioAvaliando)){
 					
@@ -238,6 +245,9 @@ public class Main {
 			
 			// Filme encontrado
 			if (filmeSendoAvaliado != null) {
+				
+				// Clona o objeto a ser avaliado para não modificar o original
+				filmeSendoAvaliado = Filme.clone((Filme)filmeSendoAvaliado);
 				
 				if (regra.validateEvaluation(filmeSendoAvaliado, usuarioAvaliando)){
 					
@@ -344,6 +354,7 @@ public class Main {
 			System.out.println("=== N�o existe essa op��o no menu. ===");
 			opcao = scn.nextLine();
 		}
+		
 		return Integer.parseInt(opcao);
 	}
 

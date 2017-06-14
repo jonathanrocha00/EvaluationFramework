@@ -11,11 +11,11 @@ public class PontoTuristico extends EvaluableItem {
 	
 	private String cidade;
 
-	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendação", "Você recomendaria este lugar?", 0, CriterionType.BOOL);
-	ObjectiveCriterion periculosidade = new ObjectiveCriterion("Periculosidade", "Este lugar é perigoso?", 0, CriterionType.BOOL);
-	ObjectiveCriterion acessibilidade = new ObjectiveCriterion("Acessibilidade", "Este lugar é acessível?", 0, CriterionType.BOOL);
+	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendaï¿½ï¿½o", "Vocï¿½ recomendaria este lugar?", 0, CriterionType.BOOL);
+	ObjectiveCriterion periculosidade = new ObjectiveCriterion("Periculosidade", "Este lugar ï¿½ perigoso?", 0, CriterionType.BOOL);
+	ObjectiveCriterion acessibilidade = new ObjectiveCriterion("Acessibilidade", "Este lugar ï¿½ acessï¿½vel?", 0, CriterionType.BOOL);
 
-	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentário geral", "O que você achou da experiência nesse local?", null);
+	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentï¿½rio geral", "O que vocï¿½ achou da experiï¿½ncia nesse local?", null);
 
 	ArrayList<ObjectiveCriterion> criteriosObjetivosDoPontoTuristico = new ArrayList<ObjectiveCriterion>();
 
@@ -42,6 +42,11 @@ public class PontoTuristico extends EvaluableItem {
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+	
+	static public PontoTuristico clone(PontoTuristico pontoTuristico) {
+		PontoTuristico retorno = new PontoTuristico(pontoTuristico.name, pontoTuristico.cidade);
+		return retorno;
 	}
 
 }

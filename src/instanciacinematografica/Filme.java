@@ -64,6 +64,11 @@ public class Filme extends EvaluableItem {
 
 	public void setClassificacao(int classificacao) {
 		this.classificacao = classificacao;
-	}	
+	}
+	
+	static public Filme clone(Filme filme) {
+		Filme retorno = new Filme(filme.name, filme.ano, filme.diretor, filme.classificacao);
+		return retorno;
+	}
 
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import model.CriterionType;
 import model.EvaluableItem;
-import model.EvaluableUser;
 import model.ObjectiveCriterion;
 import model.SubjectiveCriterion;
 
@@ -13,11 +12,11 @@ public class Estabelecimento extends EvaluableItem {
 	private String tipo;
 	private String cidade;
 	
-	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendação", "Você recomendaria este estabelecimento?", 0, CriterionType.BOOL);
-	ObjectiveCriterion preco = new ObjectiveCriterion("Preço", "O quão caro é esse lugar?", 0, CriterionType.RATE);
-	ObjectiveCriterion acessibilidade = new ObjectiveCriterion("Acessibilidade", "Este estabelecimento é acessível?", 0, CriterionType.BOOL);
+	ObjectiveCriterion recomendacao = new ObjectiveCriterion("Recomendaï¿½ï¿½o", "Vocï¿½ recomendaria este estabelecimento?", 0, CriterionType.BOOL);
+	ObjectiveCriterion preco = new ObjectiveCriterion("Preï¿½o", "O quï¿½o caro ï¿½ esse lugar?", 0, CriterionType.RATE);
+	ObjectiveCriterion acessibilidade = new ObjectiveCriterion("Acessibilidade", "Este estabelecimento ï¿½ acessï¿½vel?", 0, CriterionType.BOOL);
 
-	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentário geral", "O que você achou da experiência nesse estabelecimento?", null);
+	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentï¿½rio geral", "O que vocï¿½ achou da experiï¿½ncia nesse estabelecimento?", null);
 
 	ArrayList<ObjectiveCriterion> criteriosObjetivosDoEstabalecimento = new ArrayList<ObjectiveCriterion>();
 
@@ -53,5 +52,10 @@ public class Estabelecimento extends EvaluableItem {
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+	
+	static public Estabelecimento clone(Estabelecimento estabelecimento) {
+		Estabelecimento retorno = new Estabelecimento(estabelecimento.name, estabelecimento.cidade, estabelecimento.tipo);
+		return retorno;
 	}
 }

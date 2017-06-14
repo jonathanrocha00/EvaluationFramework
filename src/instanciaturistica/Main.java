@@ -79,6 +79,9 @@ public class Main {
 				// Ponto tur�stico encontrado
 				if (pontoTuristicoSendoAvaliado != null) {
 					
+					// Clona o objeto a ser avaliado para não modificar o original
+					pontoTuristicoSendoAvaliado = PontoTuristico.clone((PontoTuristico) pontoTuristicoSendoAvaliado);
+					
 					System.out.println("=== Voc� est� avaliando o(a) " + pontoTuristicoSendoAvaliado.getName() + " ===");
 					
 					// Avaliando crit�rios objetivos
@@ -152,6 +155,9 @@ public class Main {
 				
 				// Estabelecimento encontrado
 				if (estabelecimentoSendoAvaliado != null) {
+					
+					// Clona o objeto a ser avaliado para não modificar o original
+					estabelecimentoSendoAvaliado = Estabelecimento.clone((Estabelecimento) estabelecimentoSendoAvaliado);
 					
 					System.out.println("=== Voc� est� avaliando o estabelecimento " + estabelecimentoSendoAvaliado.getName() + " ===");
 					

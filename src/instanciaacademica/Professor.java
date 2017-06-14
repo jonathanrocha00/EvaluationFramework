@@ -11,10 +11,10 @@ public class Professor extends EvaluableUser {
 	
 	private String departamento;
 	
-	ObjectiveCriterion personalidade = new ObjectiveCriterion("Personalidade", "O quão legal o professor é como pessoa", 0, CriterionType.RATE);
-	ObjectiveCriterion provas = new ObjectiveCriterion("Provas", "O quão adequadas são as provas do professor em relação ao que ele ensina em sala", 0, CriterionType.RATE);
-	ObjectiveCriterion metodologia = new ObjectiveCriterion("Metodologia", "O quão boa é a metodologia do professor", 0, CriterionType.RATE);
-	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentário geral", "O que você gostaria de dizer para as outras pessoas sobre este professor de maneira geral", null);
+	ObjectiveCriterion personalidade = new ObjectiveCriterion("Personalidade", "O quï¿½o legal o professor ï¿½ como pessoa", 0, CriterionType.RATE);
+	ObjectiveCriterion provas = new ObjectiveCriterion("Provas", "O quï¿½o adequadas sï¿½o as provas do professor em relaï¿½ï¿½o ao que ele ensina em sala", 0, CriterionType.RATE);
+	ObjectiveCriterion metodologia = new ObjectiveCriterion("Metodologia", "O quï¿½o boa ï¿½ a metodologia do professor", 0, CriterionType.RATE);
+	SubjectiveCriterion comentario = new SubjectiveCriterion("Comentï¿½rio geral", "O que vocï¿½ gostaria de dizer para as outras pessoas sobre este professor de maneira geral", null);
 	
 	ArrayList<ObjectiveCriterion> criteriosObjetivosDoProfessor = new ArrayList<ObjectiveCriterion>();
 	
@@ -42,6 +42,11 @@ public class Professor extends EvaluableUser {
 
 	public void setDepartamento(String departamento) {
 		this.departamento = departamento;
+	}
+	
+	static public Professor clone(Professor professor) {
+		Professor retorno = new Professor(professor.name, professor.departamento);
+		return retorno;
 	}
 }
 

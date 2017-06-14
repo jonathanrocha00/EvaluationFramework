@@ -2,7 +2,6 @@ package instanciaacademica;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import control.EvaluationManagerSingleton;
@@ -101,6 +100,9 @@ public class Main {
 				// Professor encontrado
 				if (professorSendoAvaliado != null) {
 					
+					// Clona o objeto a ser avaliado para não modificar o original
+					professorSendoAvaliado = Professor.clone((Professor) professorSendoAvaliado);
+					
 					if (regra.validateEvaluation(professorSendoAvaliado, usuarioAvaliando)){
 						System.out.println("=== Voc� est� avaliando o(a) professor(a) " + professorSendoAvaliado.getName() + " ===");
 						
@@ -174,6 +176,9 @@ public class Main {
 				
 				// Disciplina encontrada
 				if (disciplinaSendoAvaliada != null) {
+					
+					// Clona o objeto a ser avaliado para não modificar o original
+					disciplinaSendoAvaliada = Disciplina.clone((Disciplina)disciplinaSendoAvaliada);
 					
 					if (regra.validateEvaluation(disciplinaSendoAvaliada, usuarioAvaliando)){
 						System.out.println("=== Voc� est� avaliando a disciplina " + disciplinaSendoAvaliada.getName() + " ===");
