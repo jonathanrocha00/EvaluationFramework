@@ -43,11 +43,7 @@ public class EvaluableUserDao implements DaoInterface<EvaluableUser>{
 	
 	@Override
 	public void insert(EvaluableUser newElement) {
-		
-		System.out.println("Entrei nesse método");
-		
 		if (doesExist(newElement)){
-			System.out.println("Entrei!");
 			update(newElement);
 		}else{
 			evaluableUserList.add(newElement);
