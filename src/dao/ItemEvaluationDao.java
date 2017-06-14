@@ -23,10 +23,27 @@ public class ItemEvaluationDao implements DaoInterface<ItemEvaluation>{
 	public ItemEvaluation search(int element) {
 		return null;
 	}
+	
+	public boolean doesExist(ItemEvaluation item){
+		
+		for (ItemEvaluation ie: itemEvaluationList){
+			if ((ie.getUser() == item.getUser()) && (ie.getEvaluatedItem() == item.getEvaluatedItem())){
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
 	@Override
 	public void insert(ItemEvaluation newElement) {
-		itemEvaluationList.add(newElement);
+		
+		if (doesExist(newElement)){
+			update(newElement);
+		}else{
+			System.out.println("Devo entrar aqui...");
+			itemEvaluationList.add(newElement);
+		}
 	}
 
 	@Override

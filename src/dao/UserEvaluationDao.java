@@ -3,7 +3,6 @@ package dao;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import model.UserEvaluation;
 
 public class UserEvaluationDao implements DaoInterface<UserEvaluation>{
@@ -22,10 +21,25 @@ public class UserEvaluationDao implements DaoInterface<UserEvaluation>{
 	public UserEvaluation search(int element) {
 		return null;
 	}
+	
+	public boolean doesExist(UserEvaluation item){
+		
+		for (UserEvaluation ue: userEvaluationList){
+			if ((ue.getUser() == item.getUser()) && (ue.getEvaluatedItem() == item.getEvaluatedItem())){
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
 	@Override
 	public void insert(UserEvaluation newElement) {
-		userEvaluationList.add(newElement);
+		if (doesExist(newElement)){
+			update(newElement);
+		}else{
+			userEvaluationList.add(newElement);
+		}
 	}
 
 	@Override
