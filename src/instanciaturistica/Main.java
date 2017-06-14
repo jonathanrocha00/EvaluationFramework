@@ -83,6 +83,7 @@ public class Main {
 					
 					// Avaliando crit�rios objetivos
 					ArrayList<ObjectiveCriterion> criteriosObjetivos = pontoTuristicoSendoAvaliado.getObjectiveCriteriaToBeEvaluated();
+					
 					for (ObjectiveCriterion criterio: criteriosObjetivos) {
 						
 						// Checa o tipo do crit�rio
@@ -156,6 +157,7 @@ public class Main {
 					
 					// Avaliando crit�rios objetivos
 					ArrayList<ObjectiveCriterion> criteriosObjetivos = estabelecimentoSendoAvaliado.getObjectiveCriteriaToBeEvaluated();
+					
 					for (ObjectiveCriterion criterio: criteriosObjetivos) {
 						
 						// Checa o tipo do crit�rio

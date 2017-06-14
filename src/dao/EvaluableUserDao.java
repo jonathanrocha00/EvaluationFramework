@@ -30,9 +30,28 @@ public class EvaluableUserDao implements DaoInterface<EvaluableUser>{
 		return null;
 	}
 	
+	public boolean doesExist(EvaluableUser user){
+		for (EvaluableUser eu: evaluableUserList){
+			if (eu.getName().equals(user.getName())){
+				user.setId(eu.getId());
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	@Override
 	public void insert(EvaluableUser newElement) {
-		evaluableUserList.add(newElement);
+		
+		System.out.println("Entrei nesse método");
+		
+		if (doesExist(newElement)){
+			System.out.println("Entrei!");
+			update(newElement);
+		}else{
+			evaluableUserList.add(newElement);
+		}
 	}
 	
 	@Override

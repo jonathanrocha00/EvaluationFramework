@@ -28,19 +28,43 @@ public class Main {
 		evaluableItemService.insert(new Disciplina("F�sica", "CCET"));
 		
 		RegraAcademica regra = new RegraAcademica();
+		User usuarioAvaliando = null;
 		
 		Scanner scanner = new Scanner(System.in);
 		int inputNum = 0;
 		String inputText;
+		String inputText2;
 		
 		System.out.println("=== Bem vindo ao AvAliado ===");
 		System.out.println("");
 		
 		// Criando um usu�rio para a pessoa que iniciou o sistema
-		System.out.println("=== Quem � voc�? ===");
+		System.out.println("=== Voce e 1 - aluno, 2 - professor? ===");
 		inputText = scanner.nextLine();
-		User usuarioAvaliando = new User(inputText);
-		userService.insert(usuarioAvaliando);
+		while(!inputText.equals("1") && !inputText.equals("2")){
+			System.out.println("=== Valor invalido, tente novamente. 1 - aluno, 2 - professor ===");
+			inputText = scanner.nextLine();
+		}
+		
+		System.out.println("=== Quem � voc�? ===");
+		
+		if (inputText.equals("1")){
+			inputText = scanner.nextLine();
+			System.out.println("=== Qual o seu periodo? ===");
+			inputText2 = scanner.nextLine();
+			usuarioAvaliando = new Aluno(inputText, Integer.parseInt(inputText2));
+			userService.insert(usuarioAvaliando);
+		}else if (inputText.equals("2")){
+			inputText = scanner.nextLine();
+			System.out.println("=== Qual o seu departamento? ===");
+			inputText2 = scanner.nextLine();
+			usuarioAvaliando = new Professor(inputText, inputText2);
+			userService.insert(usuarioAvaliando);
+			evaluableUserService.insert((Professor) usuarioAvaliando);
+		}
+		
+//		User usuarioAvaliando = new User(inputText);
+//		userService.insert(usuarioAvaliando);
 		
 		while (true) {
 			System.out.println("");
@@ -220,7 +244,7 @@ public class Main {
 			
 			// Caso tenha escolhido [5] - trocar de usu�rio
 			else if (inputNum == 5) {
-				usuarioAvaliando = logarComNovoUsuario(userService, scanner);
+				usuarioAvaliando = logarComNovoUsuario(userService, evaluableUserService, scanner);
 			}
 			
 			// Caso tenha sido escolhido numero inexistente
@@ -228,20 +252,38 @@ public class Main {
 				System.out.println("=== N�o existe essa op��o no menu. ===");
 			}
 		}
-		
-		
-		
+			
 	}
 
-	private static User logarComNovoUsuario(UserService userService, Scanner scanner) {
+	private static User logarComNovoUsuario(UserService userService, EvaluableUserService evaluableUserService, Scanner scanner) {
 		String inputText;
-		User usuarioAvaliando;
+		String inputText2;
+		User usuarioAvaliando = null;
+		
+		System.out.println("=== Voce e 1 - aluno, 2 - professor? ===");
+		inputText = scanner.nextLine();
+		while(!inputText.equals("1") && !inputText.equals("2")){
+			System.out.println("=== Valor invalido, tente novamente. 1 - aluno, 2 - professor ===");
+			inputText = scanner.nextLine();
+		}
+		
 		System.out.println("=== Quem � voc�? ===");
 		
-		inputText = scanner.nextLine();
+		if (inputText.equals("1")){
+			inputText = scanner.nextLine();
+			System.out.println("=== Qual o seu periodo? ===");
+			inputText2 = scanner.nextLine();
+			usuarioAvaliando = new Aluno(inputText, Integer.parseInt(inputText2));
+			userService.insert(usuarioAvaliando);
+		}else if (inputText.equals("2")){
+			inputText = scanner.nextLine();
+			System.out.println("=== Qual o seu departamento? ===");
+			inputText2 = scanner.nextLine();
+			usuarioAvaliando = new Professor(inputText, inputText2);
+			userService.insert(usuarioAvaliando);
+			evaluableUserService.insert((Professor) usuarioAvaliando);
+		}
 		
-		usuarioAvaliando = new User(inputText);
-		userService.insert(usuarioAvaliando);
 		return usuarioAvaliando;
 	}
 	
