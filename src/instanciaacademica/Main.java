@@ -37,7 +37,7 @@ public class Main {
 		System.out.println("=== Bem vindo ao AvAliado ===");
 		System.out.println("");
 		
-		// Criando um usu�rio para a pessoa que iniciou o sistema
+		// Criando um usuario para a pessoa que iniciou o sistema
 		System.out.println("=== Voce e 1 - aluno, 2 - professor? ===");
 		inputText = scanner.nextLine();
 		while(!inputText.equals("1") && !inputText.equals("2")){

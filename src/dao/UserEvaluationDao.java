@@ -25,7 +25,7 @@ public class UserEvaluationDao implements DaoInterface<UserEvaluation>{
 	public boolean doesExist(UserEvaluation item){
 		
 		for (UserEvaluation ue: userEvaluationList){
-			if ((ue.getUser() == item.getUser()) && (ue.getEvaluatedItem() == item.getEvaluatedItem())){
+			if ((ue.getUser().getId() == item.getUser().getId()) && (ue.getEvaluatedItem().getName() == item.getEvaluatedItem().getName())){
 				return true;
 			}
 		}
@@ -48,7 +48,7 @@ public class UserEvaluationDao implements DaoInterface<UserEvaluation>{
 		while(it.hasNext()) {
 			UserEvaluation ue = it.next();
 			
-			if(ue.getUser() == element.getUser() && ue.getEvaluatedItem() == element.getEvaluatedItem()) {
+			if(ue.getUser() == element.getUser() && ue.getEvaluatedItem().getName() == element.getEvaluatedItem().getName()) {
 				ue.setDate(element.getDate());
 				ue.setComments(element.getComments());
 				ue.setRates(element.getRates());
