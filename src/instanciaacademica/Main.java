@@ -77,50 +77,51 @@ public class Main {
 				// Professor encontrado
 				if (professorSendoAvaliado != null) {
 					
-					System.out.println("=== Voc� est� avaliando o(a) professor(a) " + professorSendoAvaliado.getName() + " ===");
-					
-					// Avaliando crit�rios objetivos
-					ArrayList<ObjectiveCriterion> criteriosObjetivos = professorSendoAvaliado.getObjectiveCriteriaToBeEvaluated();
-					for (ObjectiveCriterion criterio: criteriosObjetivos) {
+					if (regra.validateEvaluation(professorSendoAvaliado, usuarioAvaliando)){
+						System.out.println("=== Voc� est� avaliando o(a) professor(a) " + professorSendoAvaliado.getName() + " ===");
 						
-						// Checa o tipo do crit�rio
-						if (criterio.getCriterionType() == CriterionType.RATE) {
-							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com uma nota de 0 a 10 ===");
+						// Avaliando crit�rios objetivos
+						ArrayList<ObjectiveCriterion> criteriosObjetivos = professorSendoAvaliado.getObjectiveCriteriaToBeEvaluated();
+						for (ObjectiveCriterion criterio: criteriosObjetivos) {
+							
+							// Checa o tipo do crit�rio
+							if (criterio.getCriterionType() == CriterionType.RATE) {
+								System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com uma nota de 0 a 10 ===");
+							}
+							else {
+								System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com 1 ou 0 ===");
+							}
+	
+							
+							inputText = scanner.nextLine();
+							
+							inputNum = parseInt(inputText);
+							
+							criterio.setRate(inputNum);
 						}
-						else {
-							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com 1 ou 0 ===");
+						
+						System.out.println("=== Voc� avaliou " + professorSendoAvaliado.getName() + " dessa maneira: ===");
+						for (ObjectiveCriterion criterio: criteriosObjetivos) {
+							System.out.println(">>> " + criterio.getName() + ": " + criterio.getRate());
 						}
-
 						
-						inputText = scanner.nextLine();
+						// Avaliando crit�rios subjetivos
+						ArrayList<SubjectiveCriterion> criteriosSubjetivos = professorSendoAvaliado.getSubjectiveCriteriaToBeEvaluated();
+						for (SubjectiveCriterion criterio: criteriosSubjetivos) {
+							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com um texto ===");
+							
+							inputText = scanner.nextLine();
+							criterio.setComment(inputText);
+						}
+						System.out.println("=== Voc� avaliou " + professorSendoAvaliado.getName() + " dessa maneira: ===");
+						for (SubjectiveCriterion criterio: criteriosSubjetivos) {
+							System.out.println(">>> " + criterio.getName() + ": ");
+							System.out.println(criterio.getComment());
+						}
 						
-						inputNum = parseInt(inputText);
-						
-						criterio.setRate(inputNum);
+						// Criando objeto da avalia��o
+						EvaluationManagerSingleton.getInstance().evaluateUser(professorSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					}
-					
-					System.out.println("=== Voc� avaliou " + professorSendoAvaliado.getName() + " dessa maneira: ===");
-					for (ObjectiveCriterion criterio: criteriosObjetivos) {
-						System.out.println(">>> " + criterio.getName() + ": " + criterio.getRate());
-					}
-					
-					// Avaliando crit�rios subjetivos
-					ArrayList<SubjectiveCriterion> criteriosSubjetivos = professorSendoAvaliado.getSubjectiveCriteriaToBeEvaluated();
-					for (SubjectiveCriterion criterio: criteriosSubjetivos) {
-						System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com um texto ===");
-						
-						inputText = scanner.nextLine();
-						criterio.setComment(inputText);
-					}
-					System.out.println("=== Voc� avaliou " + professorSendoAvaliado.getName() + " dessa maneira: ===");
-					for (SubjectiveCriterion criterio: criteriosSubjetivos) {
-						System.out.println(">>> " + criterio.getName() + ": ");
-						System.out.println(criterio.getComment());
-					}
-					
-					// Criando objeto da avalia��o
-					EvaluationManagerSingleton.getInstance().evaluateUser(regra, professorSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
-					
 					
 				}
 				
@@ -144,54 +145,55 @@ public class Main {
 				
 				EvaluableItem disciplinaSendoAvaliada = evaluableItemService.search(inputNum);
 				
-				// Disciplina encontrado
+				// Disciplina encontrada
 				if (disciplinaSendoAvaliada != null) {
 					
-					System.out.println("=== Voc� est� avaliando a disciplina " + disciplinaSendoAvaliada.getName() + " ===");
-					
-					// Avaliando crit�rios objetivos
-					ArrayList<ObjectiveCriterion> criteriosObjetivos = disciplinaSendoAvaliada.getObjectiveCriteriaToBeEvaluated();
-					for (ObjectiveCriterion criterio: criteriosObjetivos) {
+					if (regra.validateEvaluation(disciplinaSendoAvaliada, usuarioAvaliando)){
+						System.out.println("=== Voc� est� avaliando a disciplina " + disciplinaSendoAvaliada.getName() + " ===");
 						
-						// Checa o tipo do crit�rio
-						if (criterio.getCriterionType() == CriterionType.RATE) {
-							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com uma nota de 0 a 10 ===");
+						// Avaliando crit�rios objetivos
+						ArrayList<ObjectiveCriterion> criteriosObjetivos = disciplinaSendoAvaliada.getObjectiveCriteriaToBeEvaluated();
+						for (ObjectiveCriterion criterio: criteriosObjetivos) {
+							
+							// Checa o tipo do crit�rio
+							if (criterio.getCriterionType() == CriterionType.RATE) {
+								System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com uma nota de 0 a 10 ===");
+							}
+							else {
+								System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com 1 ou 0 ===");
+							}
+							
+							inputText = scanner.nextLine();
+							
+							inputNum = parseInt(inputText);
+							
+							criterio.setRate(inputNum);
 						}
-						else {
-							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com 1 ou 0 ===");
+						
+						System.out.println("=== Voc� avaliou " + disciplinaSendoAvaliada.getName() + " dessa maneira: ===");
+						for (ObjectiveCriterion criterio: criteriosObjetivos) {
+							System.out.println(">>> " + criterio.getName() + ": " + criterio.getRate());
 						}
 						
-						inputText = scanner.nextLine();
+						// Avaliando crit�rios subjetivos
+						ArrayList<SubjectiveCriterion> criteriosSubjetivos = disciplinaSendoAvaliada.getSubjectiveCriteriaToBeEvaluated();
+						for (SubjectiveCriterion criterio: criteriosSubjetivos) {
+							System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com um texto ===");
+							
+							
+							inputText = scanner.nextLine();
+							
+							criterio.setComment(inputText);
+						}
+						System.out.println("=== Voc� avaliou " + disciplinaSendoAvaliada.getName() + " dessa maneira: ===");
+						for (SubjectiveCriterion criterio: criteriosSubjetivos) {
+							System.out.println(">>> " + criterio.getName() + ": ");
+							System.out.println(criterio.getComment());
+						}
 						
-						inputNum = parseInt(inputText);
-						
-						criterio.setRate(inputNum);
+						// Criando objeto da avalia��o
+						EvaluationManagerSingleton.getInstance().evaluateItem(disciplinaSendoAvaliada, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					}
-					
-					System.out.println("=== Voc� avaliou " + disciplinaSendoAvaliada.getName() + " dessa maneira: ===");
-					for (ObjectiveCriterion criterio: criteriosObjetivos) {
-						System.out.println(">>> " + criterio.getName() + ": " + criterio.getRate());
-					}
-					
-					// Avaliando crit�rios subjetivos
-					ArrayList<SubjectiveCriterion> criteriosSubjetivos = disciplinaSendoAvaliada.getSubjectiveCriteriaToBeEvaluated();
-					for (SubjectiveCriterion criterio: criteriosSubjetivos) {
-						System.out.println("=== Avaliando " + criterio.getName() + " (" + criterio.getDescription() + ") com um texto ===");
-						
-						
-						inputText = scanner.nextLine();
-						
-						criterio.setComment(inputText);
-					}
-					System.out.println("=== Voc� avaliou " + disciplinaSendoAvaliada.getName() + " dessa maneira: ===");
-					for (SubjectiveCriterion criterio: criteriosSubjetivos) {
-						System.out.println(">>> " + criterio.getName() + ": ");
-						System.out.println(criterio.getComment());
-					}
-					
-					// Criando objeto da avalia��o
-					EvaluationManagerSingleton.getInstance().evaluateItem(regra, disciplinaSendoAvaliada, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
-					
 				}
 				
 				// Disciplina n�o encontrada

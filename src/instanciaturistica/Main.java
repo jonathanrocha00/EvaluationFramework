@@ -7,11 +7,9 @@ import java.util.Scanner;
 import control.EvaluationManagerSingleton;
 import model.CriterionType;
 import model.EvaluableItem;
-import model.ItemEvaluation;
 import model.ObjectiveCriterion;
 import model.SubjectiveCriterion;
 import service.EvaluableItemService;
-import service.ItemEvaluationService;
 import service.UserService;
 
 public class Main {
@@ -32,8 +30,6 @@ public class Main {
 		evaluableItemService.insert(new Estabelecimento("Starbucks", "Recife", "Caf�"));
 		evaluableItemService.insert(new Estabelecimento("Riachuelo", "Fortaleza", "Loja"));
 		
-		RegraTuristica regra = new RegraTuristica();
-		
 		Scanner scanner = new Scanner(System.in);
 		int inputNum = 0;
 		String inputText;
@@ -53,7 +49,7 @@ public class Main {
 			System.out.println("");
 			System.out.println("");
 			
-			// Pergunta ao usu�rio se ele deseja avalair professores ou disciplinas e recebe a resposta
+			// Pergunta ao usu�rio se ele deseja avalair pontos turisticos ou estabelecimentos e recebe a resposta
 			System.out.println("=== O que deseja fazer? ===");
 			System.out.println("=== Insira [1] para avaliar pontos turisticos ===");
 			System.out.println("=== Insira [2] para avaliar estabelecimentos ===");
@@ -123,7 +119,7 @@ public class Main {
 					}
 					
 					// Criando objeto da avalia��o
-					EvaluationManagerSingleton.getInstance().evaluateItem(regra, pontoTuristicoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
+					EvaluationManagerSingleton.getInstance().evaluateItem(pontoTuristicoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					
 				}
 				
@@ -193,7 +189,7 @@ public class Main {
 					}
 					
 					// Criando objeto da avalia��o
-					EvaluationManagerSingleton.getInstance().evaluateItem(regra, estabelecimentoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
+					EvaluationManagerSingleton.getInstance().evaluateItem(estabelecimentoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 				}
 				
 				// Disciplina n�o encontrada
@@ -225,7 +221,6 @@ public class Main {
 	}
 
 	private static Usuario logarComNovoUsuario(UserService userService, Scanner scanner) {
-		String inputText;
 		Usuario usuarioAvaliando;
 		System.out.println("=== Qual seu nome? ===");
 		String nome = scanner.nextLine();

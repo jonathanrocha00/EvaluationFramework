@@ -88,8 +88,7 @@ public class Main {
 				// Desenho encontrado
 				if (desenhoSendoAvaliado != null) {
 					
-					if (!regra.validateEvaluation(desenhoSendoAvaliado, usuarioAvaliando)){
-					}else{
+					if (regra.validateEvaluation(desenhoSendoAvaliado, usuarioAvaliando)){
 					
 						System.out.println("=== Você está avaliando o(a) " + desenhoSendoAvaliado.getName() + " ===");
 						
@@ -131,7 +130,7 @@ public class Main {
 						}
 						
 						// Criando objeto da avalia��o
-						EvaluationManagerSingleton.getInstance().evaluateItem(regra, desenhoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
+						EvaluationManagerSingleton.getInstance().evaluateItem(desenhoSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					}
 				}
 				
@@ -160,8 +159,7 @@ public class Main {
 				// Serie encontrada
 				if (serieSendoAvaliada != null) {
 					
-					if (!regra.validateEvaluation(serieSendoAvaliada, usuarioAvaliando)){
-					}else{
+					if (regra.validateEvaluation(serieSendoAvaliada, usuarioAvaliando)){
 					
 						System.out.println("=== Voc� est� avaliando a serie " + serieSendoAvaliada.getName() + " ===");
 						
@@ -204,7 +202,7 @@ public class Main {
 						}
 						
 						// Criando objeto da avalia��o
-						EvaluationManagerSingleton.getInstance().evaluateItem(regra, serieSendoAvaliada, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
+						EvaluationManagerSingleton.getInstance().evaluateItem(serieSendoAvaliada, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 					}
 				}
 				
@@ -233,8 +231,7 @@ public class Main {
 			// Filme encontrado
 			if (filmeSendoAvaliado != null) {
 				
-				if (!regra.validateEvaluation(filmeSendoAvaliado, usuarioAvaliando)){
-				}else{
+				if (regra.validateEvaluation(filmeSendoAvaliado, usuarioAvaliando)){
 					
 					System.out.println("=== Voc� est� avaliando a filme " + filmeSendoAvaliado.getName() + " ===");
 					
@@ -277,7 +274,7 @@ public class Main {
 					}
 					
 					// Criando objeto da avalia��o
-					EvaluationManagerSingleton.getInstance().evaluateItem(regra, filmeSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
+					EvaluationManagerSingleton.getInstance().evaluateItem(filmeSendoAvaliado, usuarioAvaliando, criteriosSubjetivos, criteriosObjetivos, new Date());
 				}
 			}
 			

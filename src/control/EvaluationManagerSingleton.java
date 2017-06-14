@@ -31,20 +31,12 @@ public class EvaluationManagerSingleton {
 		return singletonInstance;
 	}
 	
-	public void evaluateItem(EvaluationRule<Object, Object> evaluationRuleItem, EvaluableItem evaluatedItem, User user, List<SubjectiveCriterion> comments, List<ObjectiveCriterion> rates, Date date) {
-		
-		if (evaluationRuleItem.validateEvaluation(evaluatedItem, user) == true){
-			itemEvaluationService.insert(new ItemEvaluation(evaluatedItem, user, comments, rates, date));
-		}else{
-			System.out.println("Não é possível fazer a avaliação!");
-		}
+	public void evaluateItem(EvaluableItem evaluatedItem, User user, List<SubjectiveCriterion> comments, List<ObjectiveCriterion> rates, Date date) {
+		itemEvaluationService.insert(new ItemEvaluation(evaluatedItem, user, comments, rates, date));
 	}
 	
-	public void evaluateUser(EvaluationRule<Object, Object> evaluationRuleUser, EvaluableUser evaluatedUser, User user, List<SubjectiveCriterion> comments, List<ObjectiveCriterion> rates, Date date) {
-		
-		if (evaluationRuleUser.validateEvaluation(evaluatedUser, user) == true){
-			userEvaluationService.insert(new UserEvaluation(evaluatedUser, user, comments, rates, date));
-		}
+	public void evaluateUser(EvaluableUser evaluatedUser, User user, List<SubjectiveCriterion> comments, List<ObjectiveCriterion> rates, Date date) {
+		userEvaluationService.insert(new UserEvaluation(evaluatedUser, user, comments, rates, date));
 	}
 	
 	public List<ItemEvaluation> getAllItemEvaluations(){
